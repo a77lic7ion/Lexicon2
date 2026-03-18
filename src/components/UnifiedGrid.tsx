@@ -5,6 +5,7 @@ import { Target, X, Flame } from 'lucide-react';
 import { Tile } from './Tile';
 import { TileSVG } from './TileSVG';
 import { Tier } from '../constants';
+import boardSvg from '../assets/lexicon_board.svg';
 
 interface UnifiedGridProps {
   myGrid: CellState[][];
@@ -25,7 +26,7 @@ export const UnifiedGrid: React.FC<UnifiedGridProps> = ({
     >
       {/* The Board SVG Background */}
       <img 
-        src="/src/assets/lexicon_board.svg" 
+        src={boardSvg} 
         className="absolute inset-0 w-full h-full object-contain pointer-events-none" 
         alt="Board"
       />
