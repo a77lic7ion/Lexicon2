@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="stormGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#4682B4;stop-opacity:1" />
+      <stop offset="50%"  style="stop-color:#1E90FF;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#00008B;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <path d="M10 10 Q30 50 10 90 L90 90 Q70 50 90 10 Z" fill="url(#stormGrad)" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.9;0.7" dur="1s" repeatCount="indefinite" />
+  </path>
+</svg>

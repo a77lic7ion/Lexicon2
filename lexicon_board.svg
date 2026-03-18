@@ -1,0 +1,504 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+
+    <!-- Background wood gradient -->
+    <linearGradient id="bgWood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#0D1117"/>
+      <stop offset="50%"  style="stop-color:#111820"/>
+      <stop offset="100%" style="stop-color:#080D13"/>
+    </linearGradient>
+
+    <!-- Board surface -->
+    <linearGradient id="boardSurface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#141E2C"/>
+      <stop offset="40%"  style="stop-color:#0F1820"/>
+      <stop offset="100%" style="stop-color:#0A1018"/>
+    </linearGradient>
+
+    <!-- Gold glow gradient for grid lines -->
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#C8922A"/>
+      <stop offset="50%"  style="stop-color:#F5C842"/>
+      <stop offset="100%" style="stop-color:#C8922A"/>
+    </linearGradient>
+
+    <!-- Border panel gradient -->
+    <linearGradient id="borderPanel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#1A2535"/>
+      <stop offset="100%" style="stop-color:#0C1420"/>
+    </linearGradient>
+
+    <!-- Iron bracket gradient -->
+    <linearGradient id="ironGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#4A4A5A"/>
+      <stop offset="50%"  style="stop-color:#2A2A38"/>
+      <stop offset="100%" style="stop-color:#1A1A25"/>
+    </linearGradient>
+
+    <!-- Cell hover glow -->
+    <radialGradient id="cellGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   style="stop-color:#1E3050"/>
+      <stop offset="100%" style="stop-color:#0A1420"/>
+    </radialGradient>
+
+    <!-- Center spotlight -->
+    <radialGradient id="spotlight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   style="stop-color:#1E2A3A;stop-opacity:1"/>
+      <stop offset="70%"  style="stop-color:#0F1820;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#050A10;stop-opacity:1"/>
+    </radialGradient>
+
+    <!-- Gold label glow filter -->
+    <filter id="goldGlowFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#F5C842" flood-opacity="0.6" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Grid line glow -->
+    <filter id="gridGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Runic text glow -->
+    <filter id="runeGlow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#8B6914" flood-opacity="0.5" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Drop shadow for board -->
+    <filter id="boardShadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+
+    <!-- Wood grain pattern -->
+    <pattern id="woodGrain" x="0" y="0" width="1000" height="18" patternUnits="userSpaceOnUse">
+      <rect width="1000" height="18" fill="none"/>
+      <line x1="0" y1="9" x2="1000" y2="9" stroke="#FFFFFF" stroke-width="0.3" opacity="0.04"/>
+      <line x1="0" y1="3" x2="1000" y2="3" stroke="#FFFFFF" stroke-width="0.2" opacity="0.02"/>
+      <line x1="0" y1="15" x2="1000" y2="15" stroke="#000000" stroke-width="0.3" opacity="0.06"/>
+    </pattern>
+
+  </defs>
+
+  <!-- ══ OUTER BACKGROUND ══════════════════════════════════════════ -->
+  <rect width="1000" height="1000" fill="url(#bgWood)"/>
+  <rect width="1000" height="1000" fill="url(#woodGrain)"/>
+
+  <!-- ══ BOARD FRAME ═══════════════════════════════════════════════ -->
+  <rect x="30" y="30" width="940" height="940" rx="8" ry="8"
+        fill="url(#boardSurface)" filter="url(#boardShadow)"/>
+  <!-- Outer border line -->
+  <rect x="30" y="30" width="940" height="940" rx="8" ry="8"
+        fill="none" stroke="#2A3A50" stroke-width="2"/>
+
+  <!-- Wood grain on board -->
+  <rect x="30" y="30" width="940" height="940" rx="8" ry="8"
+        fill="url(#woodGrain)" opacity="0.6"/>
+
+  <!-- Spotlight center -->
+  <rect x="30" y="30" width="940" height="940" rx="8" ry="8"
+        fill="url(#spotlight)"/>
+
+  <!-- ══ RUNIC BORDER DECORATIONS ══════════════════════════════════ -->
+
+  <!-- TOP BORDER RUNES -->
+  <g fill="#6B4F1A" font-family="serif" font-size="14" opacity="0.7" filter="url(#runeGlow)">
+    <!-- Row of rune-like characters across top border -->
+    <text x="55"  y="62">ᚠ</text><text x="75"  y="62">ᚢ</text><text x="95"  y="62">ᚦ</text>
+    <text x="115" y="62">ᚨ</text><text x="135" y="62">ᚱ</text><text x="155" y="62">ᚲ</text>
+    <text x="175" y="62">ᚷ</text><text x="195" y="62">ᚹ</text><text x="215" y="62">ᚺ</text>
+    <text x="235" y="62">ᚾ</text><text x="255" y="62">ᛁ</text><text x="275" y="62">ᛃ</text>
+    <text x="295" y="62">ᛇ</text><text x="315" y="62">ᛈ</text><text x="335" y="62">ᛉ</text>
+    <!-- skip label zone 350-680 -->
+    <text x="680" y="62">ᛊ</text><text x="700" y="62">ᛏ</text><text x="720" y="62">ᛒ</text>
+    <text x="740" y="62">ᛖ</text><text x="760" y="62">ᛗ</text><text x="780" y="62">ᛚ</text>
+    <text x="800" y="62">ᛜ</text><text x="820" y="62">ᛞ</text><text x="840" y="62">ᛟ</text>
+    <text x="860" y="62">ᚠ</text><text x="880" y="62">ᚢ</text><text x="900" y="62">ᚦ</text>
+    <text x="920" y="62">ᚨ</text><text x="940" y="62">ᚱ</text>
+  </g>
+  <!-- Second row top -->
+  <g fill="#5A4015" font-family="serif" font-size="12" opacity="0.5">
+    <text x="55"  y="80">ᛁ</text><text x="75"  y="80">ᛃ</text><text x="95"  y="80">ᛇ</text>
+    <text x="115" y="80">ᛈ</text><text x="135" y="80">ᛉ</text><text x="155" y="80">ᛊ</text>
+    <text x="175" y="80">ᛏ</text><text x="195" y="80">ᛒ</text><text x="215" y="80">ᛖ</text>
+    <text x="235" y="80">ᛗ</text><text x="255" y="80">ᛚ</text><text x="275" y="80">ᛜ</text>
+    <text x="295" y="80">ᛞ</text><text x="315" y="80">ᛟ</text><text x="335" y="80">ᚠ</text>
+    <text x="680" y="80">ᚢ</text><text x="700" y="80">ᚦ</text><text x="720" y="80">ᚨ</text>
+    <text x="740" y="80">ᚱ</text><text x="760" y="80">ᚲ</text><text x="780" y="80">ᚷ</text>
+    <text x="800" y="80">ᚹ</text><text x="820" y="80">ᚺ</text><text x="840" y="80">ᚾ</text>
+    <text x="860" y="80">ᛁ</text><text x="880" y="80">ᛃ</text><text x="900" y="80">ᛇ</text>
+    <text x="920" y="80">ᛈ</text><text x="940" y="80">ᛉ</text>
+  </g>
+
+  <!-- BOTTOM BORDER RUNES -->
+  <g fill="#6B4F1A" font-family="serif" font-size="14" opacity="0.7" filter="url(#runeGlow)">
+    <text x="55"  y="945">ᚲ</text><text x="75"  y="945">ᚷ</text><text x="95"  y="945">ᚹ</text>
+    <text x="115" y="945">ᚺ</text><text x="135" y="945">ᚾ</text><text x="155" y="945">ᛁ</text>
+    <text x="175" y="945">ᛃ</text><text x="195" y="945">ᛇ</text><text x="215" y="945">ᛈ</text>
+    <text x="235" y="945">ᛉ</text><text x="255" y="945">ᛊ</text><text x="275" y="945">ᛏ</text>
+    <text x="295" y="945">ᛒ</text><text x="315" y="945">ᛖ</text><text x="335" y="945">ᛗ</text>
+    <text x="680" y="945">ᛚ</text><text x="700" y="945">ᛜ</text><text x="720" y="945">ᛞ</text>
+    <text x="740" y="945">ᛟ</text><text x="760" y="945">ᚠ</text><text x="780" y="945">ᚢ</text>
+    <text x="800" y="945">ᚦ</text><text x="820" y="945">ᚨ</text><text x="840" y="945">ᚱ</text>
+    <text x="860" y="945">ᚲ</text><text x="880" y="945">ᚷ</text><text x="900" y="945">ᚹ</text>
+    <text x="920" y="945">ᚺ</text><text x="940" y="945">ᚾ</text>
+  </g>
+  <g fill="#5A4015" font-family="serif" font-size="12" opacity="0.5">
+    <text x="55"  y="962">ᛟ</text><text x="75"  y="962">ᚠ</text><text x="95"  y="962">ᚢ</text>
+    <text x="115" y="962">ᚦ</text><text x="135" y="962">ᚨ</text><text x="155" y="962">ᚱ</text>
+    <text x="175" y="962">ᚲ</text><text x="195" y="962">ᚷ</text><text x="215" y="962">ᚹ</text>
+    <text x="235" y="962">ᚺ</text><text x="255" y="962">ᚾ</text><text x="275" y="962">ᛁ</text>
+    <text x="295" y="962">ᛃ</text><text x="315" y="962">ᛇ</text><text x="335" y="962">ᛈ</text>
+    <text x="680" y="962">ᛊ</text><text x="700" y="962">ᛏ</text><text x="720" y="962">ᛒ</text>
+    <text x="740" y="962">ᛖ</text><text x="760" y="962">ᛗ</text><text x="780" y="962">ᛚ</text>
+    <text x="800" y="962">ᛜ</text><text x="820" y="962">ᛞ</text><text x="840" y="962">ᛟ</text>
+    <text x="860" y="962">ᚠ</text><text x="880" y="962">ᚢ</text><text x="900" y="962">ᚦ</text>
+    <text x="920" y="962">ᚨ</text><text x="940" y="962">ᚱ</text>
+  </g>
+
+  <!-- LEFT BORDER RUNES -->
+  <g fill="#6B4F1A" font-family="serif" font-size="14" opacity="0.7" filter="url(#runeGlow)">
+    <text x="38" y="110">ᚠ</text><text x="55" y="110">ᚢ</text>
+    <text x="38" y="130">ᛁ</text><text x="55" y="130">ᛃ</text>
+    <text x="38" y="150">ᚦ</text><text x="55" y="150">ᚨ</text>
+    <text x="38" y="170">ᚱ</text><text x="55" y="170">ᚲ</text>
+    <text x="38" y="190">ᚷ</text><text x="55" y="190">ᚹ</text>
+    <text x="38" y="210">ᚺ</text><text x="55" y="210">ᚾ</text>
+    <!-- skip label zone -->
+    <text x="38" y="730">ᛇ</text><text x="55" y="730">ᛈ</text>
+    <text x="38" y="750">ᛉ</text><text x="55" y="750">ᛊ</text>
+    <text x="38" y="770">ᛏ</text><text x="55" y="770">ᛒ</text>
+    <text x="38" y="790">ᛖ</text><text x="55" y="790">ᛗ</text>
+    <text x="38" y="810">ᛚ</text><text x="55" y="810">ᛜ</text>
+    <text x="38" y="830">ᛞ</text><text x="55" y="830">ᛟ</text>
+    <text x="38" y="850">ᚠ</text><text x="55" y="850">ᚢ</text>
+    <text x="38" y="870">ᚦ</text><text x="55" y="870">ᚨ</text>
+    <text x="38" y="890">ᚱ</text><text x="55" y="890">ᚲ</text>
+  </g>
+
+  <!-- RIGHT BORDER RUNES -->
+  <g fill="#6B4F1A" font-family="serif" font-size="14" opacity="0.7" filter="url(#runeGlow)">
+    <text x="935" y="110">ᚠ</text><text x="952" y="110">ᚢ</text>
+    <text x="935" y="130">ᛁ</text><text x="952" y="130">ᛃ</text>
+    <text x="935" y="150">ᚦ</text><text x="952" y="150">ᚨ</text>
+    <text x="935" y="170">ᚱ</text><text x="952" y="170">ᚲ</text>
+    <text x="935" y="190">ᚷ</text><text x="952" y="190">ᚹ</text>
+    <text x="935" y="210">ᚺ</text><text x="952" y="210">ᚾ</text>
+    <text x="935" y="730">ᛇ</text><text x="952" y="730">ᛈ</text>
+    <text x="935" y="750">ᛉ</text><text x="952" y="750">ᛊ</text>
+    <text x="935" y="770">ᛏ</text><text x="952" y="770">ᛒ</text>
+    <text x="935" y="790">ᛖ</text><text x="952" y="790">ᛗ</text>
+    <text x="935" y="810">ᛚ</text><text x="952" y="810">ᛜ</text>
+    <text x="935" y="830">ᛞ</text><text x="952" y="830">ᛟ</text>
+    <text x="935" y="850">ᚠ</text><text x="952" y="850">ᚢ</text>
+    <text x="935" y="870">ᚦ</text><text x="952" y="870">ᚨ</text>
+    <text x="935" y="890">ᚱ</text><text x="952" y="890">ᚲ</text>
+  </g>
+
+  <!-- Alchemical circle decorations in border corners (between runes) -->
+  <g stroke="#6B4F1A" stroke-width="1" fill="none" opacity="0.4">
+    <!-- top-left circle -->
+    <circle cx="190" cy="55" r="10"/>
+    <circle cx="190" cy="55" r="6"/>
+    <line x1="180" y1="55" x2="200" y2="55"/><line x1="190" y1="45" x2="190" y2="65"/>
+    <!-- top-right circle -->
+    <circle cx="810" cy="55" r="10"/>
+    <circle cx="810" cy="55" r="6"/>
+    <line x1="800" y1="55" x2="820" y2="55"/><line x1="810" y1="45" x2="810" y2="65"/>
+    <!-- bottom-left circle -->
+    <circle cx="190" cy="948" r="10"/>
+    <circle cx="190" cy="948" r="6"/>
+    <line x1="180" y1="948" x2="200" y2="948"/><line x1="190" y1="938" x2="190" y2="958"/>
+    <!-- bottom-right circle -->
+    <circle cx="810" cy="948" r="10"/>
+    <circle cx="810" cy="948" r="6"/>
+    <line x1="800" y1="948" x2="820" y2="948"/><line x1="810" y1="938" x2="810" y2="958"/>
+    <!-- left mid -->
+    <circle cx="55" cy="500" r="12"/>
+    <circle cx="55" cy="500" r="7"/>
+    <line x1="43" y1="500" x2="67" y2="500"/><line x1="55" y1="488" x2="55" y2="512"/>
+    <!-- right mid -->
+    <circle cx="945" cy="500" r="12"/>
+    <circle cx="945" cy="500" r="7"/>
+    <line x1="933" y1="500" x2="957" y2="500"/><line x1="945" y1="488" x2="945" y2="512"/>
+  </g>
+
+  <!-- ══ INNER GRID AREA BACKGROUND ════════════════════════════════ -->
+  <!-- Grid occupies x:150–850, y:150–850 = 700x700 for 10x10 = 70px per cell -->
+
+  <rect x="150" y="150" width="700" height="700" fill="#080E18" opacity="0.9"/>
+
+  <!-- Subtle cell alternating tint -->
+  <!-- Even cells slightly lighter -->
+  <g opacity="0.08">
+    <!-- Row 1 -->
+    <rect x="220" y="150" width="70" height="70" fill="#4A90D9"/>
+    <rect x="360" y="150" width="70" height="70" fill="#4A90D9"/>
+    <rect x="500" y="150" width="70" height="70" fill="#4A90D9"/>
+    <rect x="640" y="150" width="70" height="70" fill="#4A90D9"/>
+    <rect x="780" y="150" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 2 -->
+    <rect x="150" y="220" width="70" height="70" fill="#4A90D9"/>
+    <rect x="290" y="220" width="70" height="70" fill="#4A90D9"/>
+    <rect x="430" y="220" width="70" height="70" fill="#4A90D9"/>
+    <rect x="570" y="220" width="70" height="70" fill="#4A90D9"/>
+    <rect x="710" y="220" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 3 -->
+    <rect x="220" y="290" width="70" height="70" fill="#4A90D9"/>
+    <rect x="360" y="290" width="70" height="70" fill="#4A90D9"/>
+    <rect x="500" y="290" width="70" height="70" fill="#4A90D9"/>
+    <rect x="640" y="290" width="70" height="70" fill="#4A90D9"/>
+    <rect x="780" y="290" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 4 -->
+    <rect x="150" y="360" width="70" height="70" fill="#4A90D9"/>
+    <rect x="290" y="360" width="70" height="70" fill="#4A90D9"/>
+    <rect x="430" y="360" width="70" height="70" fill="#4A90D9"/>
+    <rect x="570" y="360" width="70" height="70" fill="#4A90D9"/>
+    <rect x="710" y="360" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 5 -->
+    <rect x="220" y="430" width="70" height="70" fill="#4A90D9"/>
+    <rect x="360" y="430" width="70" height="70" fill="#4A90D9"/>
+    <rect x="500" y="430" width="70" height="70" fill="#4A90D9"/>
+    <rect x="640" y="430" width="70" height="70" fill="#4A90D9"/>
+    <rect x="780" y="430" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 6 -->
+    <rect x="150" y="500" width="70" height="70" fill="#4A90D9"/>
+    <rect x="290" y="500" width="70" height="70" fill="#4A90D9"/>
+    <rect x="430" y="500" width="70" height="70" fill="#4A90D9"/>
+    <rect x="570" y="500" width="70" height="70" fill="#4A90D9"/>
+    <rect x="710" y="500" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 7 -->
+    <rect x="220" y="570" width="70" height="70" fill="#4A90D9"/>
+    <rect x="360" y="570" width="70" height="70" fill="#4A90D9"/>
+    <rect x="500" y="570" width="70" height="70" fill="#4A90D9"/>
+    <rect x="640" y="570" width="70" height="70" fill="#4A90D9"/>
+    <rect x="780" y="570" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 8 -->
+    <rect x="150" y="640" width="70" height="70" fill="#4A90D9"/>
+    <rect x="290" y="640" width="70" height="70" fill="#4A90D9"/>
+    <rect x="430" y="640" width="70" height="70" fill="#4A90D9"/>
+    <rect x="570" y="640" width="70" height="70" fill="#4A90D9"/>
+    <rect x="710" y="640" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 9 -->
+    <rect x="220" y="710" width="70" height="70" fill="#4A90D9"/>
+    <rect x="360" y="710" width="70" height="70" fill="#4A90D9"/>
+    <rect x="500" y="710" width="70" height="70" fill="#4A90D9"/>
+    <rect x="640" y="710" width="70" height="70" fill="#4A90D9"/>
+    <rect x="780" y="710" width="70" height="70" fill="#4A90D9"/>
+    <!-- Row 10 -->
+    <rect x="150" y="780" width="70" height="70" fill="#4A90D9"/>
+    <rect x="290" y="780" width="70" height="70" fill="#4A90D9"/>
+    <rect x="430" y="780" width="70" height="70" fill="#4A90D9"/>
+    <rect x="570" y="780" width="70" height="70" fill="#4A90D9"/>
+    <rect x="710" y="780" width="70" height="70" fill="#4A90D9"/>
+  </g>
+
+  <!-- ══ GRID LINES (PRECISE — 70px cells, origin 150,150) ═════════ -->
+  <!-- Glow layer (thick, low opacity) -->
+  <g stroke="#C8922A" stroke-width="3" opacity="0.25" filter="url(#gridGlow)">
+    <!-- Verticals: x = 150,220,290,360,430,500,570,640,710,780,850 -->
+    <line x1="150" y1="150" x2="150" y2="850"/>
+    <line x1="220" y1="150" x2="220" y2="850"/>
+    <line x1="290" y1="150" x2="290" y2="850"/>
+    <line x1="360" y1="150" x2="360" y2="850"/>
+    <line x1="430" y1="150" x2="430" y2="850"/>
+    <line x1="500" y1="150" x2="500" y2="850"/>
+    <line x1="570" y1="150" x2="570" y2="850"/>
+    <line x1="640" y1="150" x2="640" y2="850"/>
+    <line x1="710" y1="150" x2="710" y2="850"/>
+    <line x1="780" y1="150" x2="780" y2="850"/>
+    <line x1="850" y1="150" x2="850" y2="850"/>
+    <!-- Horizontals: y = 150,220,290,360,430,500,570,640,710,780,850 -->
+    <line x1="150" y1="150" x2="850" y2="150"/>
+    <line x1="150" y1="220" x2="850" y2="220"/>
+    <line x1="150" y1="290" x2="850" y2="290"/>
+    <line x1="150" y1="360" x2="850" y2="360"/>
+    <line x1="150" y1="430" x2="850" y2="430"/>
+    <line x1="150" y1="500" x2="850" y2="500"/>
+    <line x1="150" y1="570" x2="850" y2="570"/>
+    <line x1="150" y1="640" x2="850" y2="640"/>
+    <line x1="150" y1="710" x2="850" y2="710"/>
+    <line x1="150" y1="780" x2="850" y2="780"/>
+    <line x1="150" y1="850" x2="850" y2="850"/>
+  </g>
+  <!-- Sharp layer (thin, full opacity) -->
+  <g stroke="#D4A030" stroke-width="1" opacity="0.9">
+    <line x1="150" y1="150" x2="150" y2="850"/>
+    <line x1="220" y1="150" x2="220" y2="850"/>
+    <line x1="290" y1="150" x2="290" y2="850"/>
+    <line x1="360" y1="150" x2="360" y2="850"/>
+    <line x1="430" y1="150" x2="430" y2="850"/>
+    <line x1="500" y1="150" x2="500" y2="850"/>
+    <line x1="570" y1="150" x2="570" y2="850"/>
+    <line x1="640" y1="150" x2="640" y2="850"/>
+    <line x1="710" y1="150" x2="710" y2="850"/>
+    <line x1="780" y1="150" x2="780" y2="850"/>
+    <line x1="850" y1="150" x2="850" y2="850"/>
+    <line x1="150" y1="150" x2="850" y2="150"/>
+    <line x1="150" y1="220" x2="850" y2="220"/>
+    <line x1="150" y1="290" x2="850" y2="290"/>
+    <line x1="150" y1="360" x2="850" y2="360"/>
+    <line x1="150" y1="430" x2="850" y2="430"/>
+    <line x1="150" y1="500" x2="850" y2="500"/>
+    <line x1="150" y1="570" x2="850" y2="570"/>
+    <line x1="150" y1="640" x2="850" y2="640"/>
+    <line x1="150" y1="710" x2="850" y2="710"/>
+    <line x1="150" y1="780" x2="850" y2="780"/>
+    <line x1="150" y1="850" x2="850" y2="850"/>
+  </g>
+
+  <!-- ══ COLUMN LABELS — A through J ═══════════════════════════════ -->
+  <!-- Cell centers: A=185, B=255, C=325, D=395, E=465, F=535, G=605, H=675, I=745, J=815 -->
+
+  <!-- TOP LABELS (A–J) -->
+  <g font-family="Georgia, serif" font-size="22" font-weight="bold"
+     text-anchor="middle" fill="#F5C842" filter="url(#goldGlowFilter)">
+    <text x="185" y="132">A</text>
+    <text x="255" y="132">B</text>
+    <text x="325" y="132">C</text>
+    <text x="395" y="132">D</text>
+    <text x="465" y="132">E</text>
+    <text x="535" y="132">F</text>
+    <text x="605" y="132">G</text>
+    <text x="675" y="132">H</text>
+    <text x="745" y="132">I</text>
+    <text x="815" y="132">J</text>
+  </g>
+
+  <!-- BOTTOM LABELS (A–J) -->
+  <g font-family="Georgia, serif" font-size="22" font-weight="bold"
+     text-anchor="middle" fill="#F5C842" filter="url(#goldGlowFilter)">
+    <text x="185" y="882">A</text>
+    <text x="255" y="882">B</text>
+    <text x="325" y="882">C</text>
+    <text x="395" y="882">D</text>
+    <text x="465" y="882">E</text>
+    <text x="535" y="882">F</text>
+    <text x="605" y="882">G</text>
+    <text x="675" y="882">H</text>
+    <text x="745" y="882">I</text>
+    <text x="815" y="882">J</text>
+  </g>
+
+  <!-- ══ ROW LABELS — 1 through 10 ════════════════════════════════ -->
+  <!-- Cell centers: 1=185, 2=255, 3=325, 4=395, 5=465, 6=535, 7=605, 8=675, 9=745, 10=815 -->
+
+  <!-- LEFT LABELS (1–10) -->
+  <g font-family="Georgia, serif" font-size="20" font-weight="bold"
+     text-anchor="middle" dominant-baseline="middle" fill="#F5C842" filter="url(#goldGlowFilter)">
+    <text x="128" y="185">1</text>
+    <text x="128" y="255">2</text>
+    <text x="128" y="325">3</text>
+    <text x="128" y="395">4</text>
+    <text x="128" y="465">5</text>
+    <text x="128" y="535">6</text>
+    <text x="128" y="605">7</text>
+    <text x="128" y="675">8</text>
+    <text x="128" y="745">9</text>
+    <text x="122" y="815">10</text>
+  </g>
+
+  <!-- RIGHT LABELS (1–10) -->
+  <g font-family="Georgia, serif" font-size="20" font-weight="bold"
+     text-anchor="middle" dominant-baseline="middle" fill="#F5C842" filter="url(#goldGlowFilter)">
+    <text x="872" y="185">1</text>
+    <text x="872" y="255">2</text>
+    <text x="872" y="325">3</text>
+    <text x="872" y="395">4</text>
+    <text x="872" y="465">5</text>
+    <text x="872" y="535">6</text>
+    <text x="872" y="605">7</text>
+    <text x="872" y="675">8</text>
+    <text x="872" y="745">9</text>
+    <text x="878" y="815">10</text>
+  </g>
+
+  <!-- ══ IRON CORNER BRACKETS ══════════════════════════════════════ -->
+
+  <!-- Top-left bracket -->
+  <g filter="url(#boardShadow)">
+    <rect x="30" y="30" width="70" height="12" rx="3" fill="url(#ironGrad)"/>
+    <rect x="30" y="30" width="12" height="70" rx="3" fill="url(#ironGrad)"/>
+    <rect x="32" y="32" width="66" height="10" rx="2" fill="#5A5A70" opacity="0.4"/>
+    <circle cx="52" cy="52" r="5" fill="#3A3A4A"/>
+    <circle cx="52" cy="52" r="3" fill="#222230"/>
+    <circle cx="52" cy="52" r="1.5" fill="#5A5A6A"/>
+    <circle cx="75" cy="40" r="4" fill="#3A3A4A"/>
+    <circle cx="75" cy="40" r="2" fill="#222230"/>
+    <circle cx="40" cy="75" r="4" fill="#3A3A4A"/>
+    <circle cx="40" cy="75" r="2" fill="#222230"/>
+  </g>
+
+  <!-- Top-right bracket -->
+  <g filter="url(#boardShadow)">
+    <rect x="900" y="30" width="70" height="12" rx="3" fill="url(#ironGrad)"/>
+    <rect x="958" y="30" width="12" height="70" rx="3" fill="url(#ironGrad)"/>
+    <circle cx="948" cy="52" r="5" fill="#3A3A4A"/>
+    <circle cx="948" cy="52" r="3" fill="#222230"/>
+    <circle cx="948" cy="52" r="1.5" fill="#5A5A6A"/>
+    <circle cx="925" cy="40" r="4" fill="#3A3A4A"/>
+    <circle cx="925" cy="40" r="2" fill="#222230"/>
+    <circle cx="960" cy="75" r="4" fill="#3A3A4A"/>
+    <circle cx="960" cy="75" r="2" fill="#222230"/>
+  </g>
+
+  <!-- Bottom-left bracket -->
+  <g filter="url(#boardShadow)">
+    <rect x="30" y="958" width="70" height="12" rx="3" fill="url(#ironGrad)"/>
+    <rect x="30" y="900" width="12" height="70" rx="3" fill="url(#ironGrad)"/>
+    <circle cx="52" cy="948" r="5" fill="#3A3A4A"/>
+    <circle cx="52" cy="948" r="3" fill="#222230"/>
+    <circle cx="52" cy="948" r="1.5" fill="#5A5A6A"/>
+    <circle cx="75" cy="960" r="4" fill="#3A3A4A"/>
+    <circle cx="75" cy="960" r="2" fill="#222230"/>
+    <circle cx="40" cy="925" r="4" fill="#3A3A4A"/>
+    <circle cx="40" cy="925" r="2" fill="#222230"/>
+  </g>
+
+  <!-- Bottom-right bracket -->
+  <g filter="url(#boardShadow)">
+    <rect x="900" y="958" width="70" height="12" rx="3" fill="url(#ironGrad)"/>
+    <rect x="958" y="900" width="12" height="70" rx="3" fill="url(#ironGrad)"/>
+    <circle cx="948" cy="948" r="5" fill="#3A3A4A"/>
+    <circle cx="948" cy="948" r="3" fill="#222230"/>
+    <circle cx="948" cy="948" r="1.5" fill="#5A5A6A"/>
+    <circle cx="925" cy="960" r="4" fill="#3A3A4A"/>
+    <circle cx="925" cy="960" r="2" fill="#222230"/>
+    <circle cx="960" cy="925" r="4" fill="#3A3A4A"/>
+    <circle cx="960" cy="925" r="2" fill="#222230"/>
+  </g>
+
+  <!-- ══ OUTER FRAME BORDER LINES ══════════════════════════════════ -->
+  <!-- Thin gold inner frame around border zone -->
+  <rect x="100" y="100" width="800" height="800"
+        fill="none" stroke="#8B6914" stroke-width="1" opacity="0.5"/>
+  <!-- Separator line between border and grid -->
+  <rect x="148" y="148" width="704" height="704"
+        fill="none" stroke="#C8922A" stroke-width="2" opacity="0.6"/>
+
+  <!-- ══ GAME TITLE WATERMARK (centre, very subtle) ════════════════ -->
+  <text x="500" y="510"
+        font-family="Georgia, serif"
+        font-size="48"
+        font-weight="bold"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        fill="#1E3050"
+        opacity="0.12"
+        letter-spacing="16">LEXICON</text>
+
+</svg>

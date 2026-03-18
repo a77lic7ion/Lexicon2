@@ -1,0 +1,881 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+<!--
+  ============================================================
+  LEXICON — TILE SET  (ALL TIERS)
+  CORRECTED SPEC:
+
+  Grid cell:  70×70px  (10×10 board)
+  Tile face:  56×56px  (all tiles, all tiers — square, no exceptions)
+  Margin:     7px each side  (70 - 56 = 14 / 2 = 7px)
+  Placement:  translate(cellX + 7, cellY + 7)
+  Radius:     7px corners
+
+  TIER VISUAL LANGUAGE:
+  — Common   (E A I O R T N S):  grey border,  score gold,  1pt
+  — Uncommon (B C D F G H L M P): teal border,  score teal,  2-4pt
+             1×2 cell rule = GAME MECHANIC ONLY
+             tile is still 56×56px physically
+             double-cell indicator top-right communicates the span
+
+  SHOWN IN THIS FILE:
+  Row 1 — Common tier  (8 tiles)  at large display size
+  Row 2 — Common tier  in 70×70 reference cells
+  Row 3 — Uncommon tier (9 tiles) at large display size
+  Row 4 — Uncommon tier in 70×70 reference cells
+  ============================================================
+-->
+  <defs>
+    <linearGradient id="pageBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#080D13"/>
+    </linearGradient>
+    <linearGradient id="ivoryFace" x1="10%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%"   style="stop-color:#F7EDD0"/>
+      <stop offset="35%"  style="stop-color:#EDD9A3"/>
+      <stop offset="75%"  style="stop-color:#D4B870"/>
+      <stop offset="100%" style="stop-color:#B8963A"/>
+    </linearGradient>
+    <linearGradient id="bevelV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#FFFFFF;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="bevelH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#FFFFFF;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="shadowV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#5A3A00;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#3A2000;stop-opacity:0.75"/>
+    </linearGradient>
+    <linearGradient id="shadowH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#5A3A00;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#3A2000;stop-opacity:0.7"/>
+    </linearGradient>
+    <linearGradient id="tileBaseCommon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#4A3000"/>
+      <stop offset="100%" style="stop-color:#1A1000"/>
+    </linearGradient>
+    <linearGradient id="tileBaseUncommon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#003A44"/>
+      <stop offset="100%" style="stop-color:#001820"/>
+    </linearGradient>
+    <linearGradient id="borderCommon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#CCCCDD"/>
+      <stop offset="50%"  style="stop-color:#AAAACC"/>
+      <stop offset="100%" style="stop-color:#777788"/>
+    </linearGradient>
+    <linearGradient id="borderTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#00FFEE"/>
+      <stop offset="50%"  style="stop-color:#00D4FF"/>
+      <stop offset="100%" style="stop-color:#0088BB"/>
+    </linearGradient>
+    <linearGradient id="scoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#2A1800"/>
+      <stop offset="100%" style="stop-color:#0D0800"/>
+    </linearGradient>
+    <linearGradient id="scoreBgTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#001A22"/>
+      <stop offset="100%" style="stop-color:#000D10"/>
+    </linearGradient>
+
+    <filter id="letterDepth" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#1A0A00" flood-opacity="0.65"/>
+    </filter>
+    <filter id="tileDrop" x="-30%" y="-25%" width="170%" height="165%">
+      <feDropShadow dx="4" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+    <filter id="tealGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#00D4FF" flood-opacity="0.55" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feBlend in="SourceGraphic" in2="g" mode="multiply" result="b"/>
+      <feComposite in="b" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Single shared clip for 56×56 tile -->
+    <clipPath id="tc"><rect width="56" height="56" rx="7"/></clipPath>
+
+    <pattern id="grain" x="0" y="0" width="1200" height="20" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="10" x2="1200" y2="10" stroke="#FFFFFF" stroke-width="0.3" opacity="0.02"/>
+    </pattern>
+  </defs>
+
+  <!-- PAGE -->
+  <rect width="1200" height="800" fill="url(#pageBg)"/>
+  <rect width="1200" height="800" fill="url(#grain)"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       COMMON MACRO — reusable tile structure at 56×56
+       Called via <use> pattern with transform
+       Each tile: base +3,+4 offset / border -2,-2 / face 0,0
+  ═══════════════════════════════════════════════════════ -->
+
+  <!-- ── SECTION HEADER: COMMON ── -->
+  <text x="600" y="32" font-family="Georgia,serif" font-size="11"
+        text-anchor="middle" fill="#6B4F1A" letter-spacing="5" opacity="0.8">COMMON TIER  —  56×56px  —  7px MARGIN IN 70×70 CELL</text>
+  <line x1="60" y1="40" x2="1140" y2="40" stroke="#3A2A08" stroke-width="1" opacity="0.4"/>
+
+  <!--
+    Common tile positions (display):
+    8 tiles, spacing 130px, first at x=70
+    y_top = 55
+    Letter centres (x+28, y+36 for baseline of 36pt)
+  -->
+
+  <!-- COMMON TILE TEMPLATE (inline repeat — letter and score change only) -->
+
+  <!-- E -->
+  <g transform="translate(70,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold"
+          text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">E</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold" text-anchor="middle" fill="#8A7040" letter-spacing="1.5">COMMON</text>
+  </g>
+
+  <!-- A -->
+  <g transform="translate(200,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">A</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold" text-anchor="middle" fill="#8A7040" letter-spacing="1.5">COMMON</text>
+  </g>
+
+  <!-- I -->
+  <g transform="translate(330,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">I</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold" text-anchor="middle" fill="#8A7040" letter-spacing="1.5">COMMON</text>
+  </g>
+
+  <!-- O -->
+  <g transform="translate(460,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">O</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold" text-anchor="middle" fill="#8A7040" letter-spacing="1.5">COMMON</text>
+  </g>
+
+  <!-- R -->
+  <g transform="translate(590,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">R</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold" text-anchor="middle" fill="#8A7040" letter-spacing="1.5">COMMON</text>
+  </g>
+
+  <!-- T -->
+  <g transform="translate(720,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">T</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold" text-anchor="middle" fill="#8A7040" letter-spacing="1.5">COMMON</text>
+  </g>
+
+  <!-- N -->
+  <g transform="translate(850,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">N</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold" text-anchor="middle" fill="#8A7040" letter-spacing="1.5">COMMON</text>
+  </g>
+
+  <!-- S -->
+  <g transform="translate(980,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">S</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold" text-anchor="middle" fill="#8A7040" letter-spacing="1.5">COMMON</text>
+  </g>
+
+  <!-- Common labels -->
+  <g font-family="Georgia,serif" font-size="11" text-anchor="middle" fill="#6B5030" opacity="0.7">
+    <text x="98"  y="132">E · 1</text>
+    <text x="228" y="132">A · 1</text>
+    <text x="358" y="132">I · 1</text>
+    <text x="488" y="132">O · 1</text>
+    <text x="618" y="132">R · 1</text>
+    <text x="748" y="132">T · 1</text>
+    <text x="878" y="132">N · 1</text>
+    <text x="1008" y="132">S · 1</text>
+  </g>
+
+  <!-- ── COMMON IN-GRID REFERENCE ── -->
+  <line x1="60" y1="148" x2="1140" y2="148" stroke="#2A1A08" stroke-width="1" opacity="0.3"/>
+  <text x="600" y="162" font-family="Georgia,serif" font-size="10"
+        text-anchor="middle" fill="#6B4F1A" letter-spacing="3" opacity="0.5">IN 70×70 CELL  —  7px MARGIN</text>
+
+  <!-- 8 ghost cells + tiles -->
+  <g fill="none" stroke="#C8922A" stroke-width="0.8" opacity="0.2" stroke-dasharray="3,3">
+    <rect x="70"  y="170" width="70" height="70" rx="2"/>
+    <rect x="200" y="170" width="70" height="70" rx="2"/>
+    <rect x="330" y="170" width="70" height="70" rx="2"/>
+    <rect x="460" y="170" width="70" height="70" rx="2"/>
+    <rect x="590" y="170" width="70" height="70" rx="2"/>
+    <rect x="720" y="170" width="70" height="70" rx="2"/>
+    <rect x="850" y="170" width="70" height="70" rx="2"/>
+    <rect x="980" y="170" width="70" height="70" rx="2"/>
+  </g>
+
+  <!-- Tiles in cells: cellX+7, cellY+7 -->
+  <!-- E in cell -->
+  <g transform="translate(77,177)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">E</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+  </g>
+  <!-- A in cell -->
+  <g transform="translate(207,177)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">A</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+  </g>
+  <!-- I -->
+  <g transform="translate(337,177)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">I</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+  </g>
+  <!-- O -->
+  <g transform="translate(467,177)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">O</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+  </g>
+  <!-- R -->
+  <g transform="translate(597,177)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">R</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+  </g>
+  <!-- T -->
+  <g transform="translate(727,177)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">T</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+  </g>
+  <!-- N -->
+  <g transform="translate(857,177)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">N</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+  </g>
+  <!-- S -->
+  <g transform="translate(987,177)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseCommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderCommon)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#A07830" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">S</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBg)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#C8922A">1</text>
+    <circle cx="8" cy="8" r="4" fill="#666677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AAAACC" opacity="0.7"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════
+       UNCOMMON SECTION
+  ═══════════════════════════════════════════════════════ -->
+  <line x1="60" y1="262" x2="1140" y2="262" stroke="#0A3A3A" stroke-width="1" opacity="0.4"/>
+  <text x="600" y="278" font-family="Georgia,serif" font-size="11"
+        text-anchor="middle" fill="#0A6A6A" letter-spacing="5" opacity="0.9">UNCOMMON TIER  —  56×56px  —  1×2 CELL MECHANIC  (VISUAL SIZE IDENTICAL)</text>
+  <line x1="60" y1="286" x2="1140" y2="286" stroke="#0A3A3A" stroke-width="1" opacity="0.3"/>
+
+  <!-- 9 Uncommon tiles, spacing 120px, first at x=50, y=300 -->
+  <!-- B C D F G H L M P -->
+  <!-- x positions: 50, 170, 290, 410, 530, 650, 770, 890, 1010 -->
+
+  <!-- B (3pt) -->
+  <g transform="translate(50,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">B</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">3</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <!-- Double-cell indicator -->
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- C (3pt) -->
+  <g transform="translate(170,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">C</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">3</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- D (2pt) -->
+  <g transform="translate(290,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">D</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">2</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- F (4pt) -->
+  <g transform="translate(410,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">F</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">4</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- G (2pt) -->
+  <g transform="translate(530,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">G</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">2</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- H (4pt) -->
+  <g transform="translate(650,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">H</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">4</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- L (1pt) -->
+  <g transform="translate(770,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">L</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">1</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- M (3pt) -->
+  <g transform="translate(890,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">M</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">3</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- P (3pt) -->
+  <g transform="translate(1010,300)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">P</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">3</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold" text-anchor="middle" fill="#00A0C0" letter-spacing="1">UNCOMMON</text>
+  </g>
+
+  <!-- Uncommon labels -->
+  <g font-family="Georgia,serif" font-size="11" text-anchor="middle" fill="#0A7A7A" opacity="0.7">
+    <text x="78"   y="378">B · 3</text>
+    <text x="198"  y="378">C · 3</text>
+    <text x="318"  y="378">D · 2</text>
+    <text x="438"  y="378">F · 4</text>
+    <text x="558"  y="378">G · 2</text>
+    <text x="678"  y="378">H · 4</text>
+    <text x="798"  y="378">L · 1</text>
+    <text x="918"  y="378">M · 3</text>
+    <text x="1038" y="378">P · 3</text>
+  </g>
+
+  <!-- ── UNCOMMON IN-GRID reference with two ghost cells stacked ── -->
+  <line x1="60" y1="392" x2="1140" y2="392" stroke="#0A3A3A" stroke-width="1" opacity="0.3"/>
+  <text x="600" y="406" font-family="Georgia,serif" font-size="10"
+        text-anchor="middle" fill="#0A6A6A" letter-spacing="3" opacity="0.5">IN-GRID  —  TILE OCCUPIES TOP CELL  ·  SECOND CELL RESERVED BY GAME RULE</text>
+
+  <!-- Ghost cell pairs for Uncommon (tile in top cell, second cell shown reserved) -->
+  <!-- 9 pairs, spacing 120px, first cellX=50 -->
+  <g fill="none" stroke="#00D4FF" stroke-width="0.8" opacity="0.18" stroke-dasharray="3,3">
+    <rect x="50"  y="418" width="70" height="70" rx="2"/>  <rect x="50"  y="488" width="70" height="70" rx="2"/>
+    <rect x="170" y="418" width="70" height="70" rx="2"/>  <rect x="170" y="488" width="70" height="70" rx="2"/>
+    <rect x="290" y="418" width="70" height="70" rx="2"/>  <rect x="290" y="488" width="70" height="70" rx="2"/>
+    <rect x="410" y="418" width="70" height="70" rx="2"/>  <rect x="410" y="488" width="70" height="70" rx="2"/>
+    <rect x="530" y="418" width="70" height="70" rx="2"/>  <rect x="530" y="488" width="70" height="70" rx="2"/>
+    <rect x="650" y="418" width="70" height="70" rx="2"/>  <rect x="650" y="488" width="70" height="70" rx="2"/>
+    <rect x="770" y="418" width="70" height="70" rx="2"/>  <rect x="770" y="488" width="70" height="70" rx="2"/>
+    <rect x="890" y="418" width="70" height="70" rx="2"/>  <rect x="890" y="488" width="70" height="70" rx="2"/>
+    <rect x="1010" y="418" width="70" height="70" rx="2"/> <rect x="1010" y="488" width="70" height="70" rx="2"/>
+  </g>
+  <!-- Reserved cell markers (bottom cells show teal tint) -->
+  <g fill="#00D4FF" opacity="0.04">
+    <rect x="50"  y="488" width="70" height="70" rx="2"/>
+    <rect x="170" y="488" width="70" height="70" rx="2"/>
+    <rect x="290" y="488" width="70" height="70" rx="2"/>
+    <rect x="410" y="488" width="70" height="70" rx="2"/>
+    <rect x="530" y="488" width="70" height="70" rx="2"/>
+    <rect x="650" y="488" width="70" height="70" rx="2"/>
+    <rect x="770" y="488" width="70" height="70" rx="2"/>
+    <rect x="890" y="488" width="70" height="70" rx="2"/>
+    <rect x="1010" y="488" width="70" height="70" rx="2"/>
+  </g>
+
+  <!-- Tiles in top cells: cellX+7, cellY+7 = +57, +425 -->
+  <g transform="translate(57,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">B</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">3</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+
+  <!-- Remaining 8 uncommon in-cell tiles (C D F G H L M P) -->
+  <g transform="translate(177,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">C</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">3</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/><circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+  <g transform="translate(297,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">D</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">2</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/><circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+  <g transform="translate(417,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">F</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">4</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/><circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+  <g transform="translate(537,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">G</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">2</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/><circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+  <g transform="translate(657,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">H</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">4</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/><circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+  <g transform="translate(777,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">L</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">1</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/><circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+  <g transform="translate(897,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">M</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">3</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/><circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+  <g transform="translate(1017,425)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBaseUncommon)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.75"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.65"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="42" font-family="Georgia,'Times New Roman',serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1C0E00" filter="url(#letterDepth)">P</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="url(#scoreBgTeal)" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#00D4FF">3</text>
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/><circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <rect x="34" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <rect x="45" y="4" width="9" height="8" rx="1.5" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+    <line x1="43" y1="8" x2="45" y2="8" stroke="#00D4FF" stroke-width="1" opacity="0.8"/>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="574" x2="1140" y2="574" stroke="#2A1A08" stroke-width="1" opacity="0.3"/>
+  <text x="600" y="594" font-family="'Courier New',monospace" font-size="10"
+        text-anchor="middle" fill="#4A3A18" letter-spacing="3" opacity="0.5">
+    ALL TILES: 56×56px  ·  MARGIN: 7px  ·  CELL: 70×70px  ·  COMMON 8/30  ·  UNCOMMON 17/30
+  </text>
+
+</svg>

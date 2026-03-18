@@ -1,0 +1,586 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600">
+  <defs>
+
+    <!-- ── PAGE BACKGROUND ── -->
+    <linearGradient id="pageBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#080D13"/>
+    </linearGradient>
+
+    <!-- ── TILE IVORY FACE ── -->
+    <linearGradient id="ivoryFace" x1="10%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%"   style="stop-color:#F7EDD0"/>
+      <stop offset="35%"  style="stop-color:#EDD9A3"/>
+      <stop offset="75%"  style="stop-color:#D4B870"/>
+      <stop offset="100%" style="stop-color:#B8963A"/>
+    </linearGradient>
+
+    <!-- ── TILE BEVEL LIGHT (top-left highlight) ── -->
+    <linearGradient id="bevelH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#FFFFFF;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="bevelV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#FFFFFF;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- ── TILE BEVEL SHADOW (bottom-right) ── -->
+    <linearGradient id="shadowH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#5A3A00;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#3A2000;stop-opacity:0.75"/>
+    </linearGradient>
+    <linearGradient id="shadowV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#5A3A00;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#3A2000;stop-opacity:0.75"/>
+    </linearGradient>
+
+    <!-- ── TILE DEPTH BASE (3D underside) ── -->
+    <linearGradient id="tileBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#4A3000"/>
+      <stop offset="100%" style="stop-color:#1A1000"/>
+    </linearGradient>
+
+    <!-- ── COMMON border ── -->
+    <linearGradient id="borderCommon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#8A8A9A"/>
+      <stop offset="50%"  style="stop-color:#CCCCDD"/>
+      <stop offset="100%" style="stop-color:#6A6A7A"/>
+    </linearGradient>
+
+    <!-- ── UNCOMMON border (teal) ── -->
+    <linearGradient id="borderUncommon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#00D4FF"/>
+      <stop offset="50%"  style="stop-color:#00FFEE"/>
+      <stop offset="100%" style="stop-color:#0088BB"/>
+    </linearGradient>
+
+    <!-- ── RARE border (gold) ── -->
+    <linearGradient id="borderRare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#FFE066"/>
+      <stop offset="50%"  style="stop-color:#F5A623"/>
+      <stop offset="100%" style="stop-color:#B87820"/>
+    </linearGradient>
+
+    <!-- ── WILDCARD face (purple) ── -->
+    <linearGradient id="purpleFace" x1="10%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%"   style="stop-color:#D4A0FF"/>
+      <stop offset="40%"  style="stop-color:#9B40E0"/>
+      <stop offset="100%" style="stop-color:#4A0E8F"/>
+    </linearGradient>
+
+    <!-- ── WILDCARD border ── -->
+    <linearGradient id="borderWild" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#E8AAFF"/>
+      <stop offset="50%"  style="stop-color:#C060FF"/>
+      <stop offset="100%" style="stop-color:#7020C0"/>
+    </linearGradient>
+
+    <!-- ── SCORE BADGE ── -->
+    <linearGradient id="scoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#2A1800"/>
+      <stop offset="100%" style="stop-color:#0D0800"/>
+    </linearGradient>
+
+    <!-- ── LETTER SHADOW FILTER ── -->
+    <filter id="letterDepth" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#2A1500" flood-opacity="0.7"/>
+    </filter>
+
+    <!-- ── TILE DROP SHADOW ── -->
+    <filter id="tileDrop" x="-20%" y="-15%" width="150%" height="150%">
+      <feDropShadow dx="8" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+
+    <!-- ── GOLD GLOW (rare border) ── -->
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#F5A623" flood-opacity="0.7" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- ── TEAL GLOW (uncommon border) ── -->
+    <filter id="tealGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#00D4FF" flood-opacity="0.6" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- ── PURPLE GLOW (wildcard) ── -->
+    <filter id="purpleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+      <feFlood flood-color="#C060FF" flood-opacity="0.7" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- ── NOISE TEXTURE ── -->
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noiseOut"/>
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended"/>
+      <feComposite in="blended" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- ── INSET INNER SHADOW ── -->
+    <filter id="insetShadow">
+      <feOffset dx="0" dy="2"/>
+      <feGaussianBlur stdDeviation="3" result="offset-blur"/>
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+      <feFlood flood-color="#000000" flood-opacity="0.4" result="color"/>
+      <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Clip paths for each tile -->
+    <clipPath id="clipC"><rect x="0" y="0" width="180" height="200" rx="16"/></clipPath>
+    <clipPath id="clipU"><rect x="0" y="0" width="180" height="200" rx="16"/></clipPath>
+    <clipPath id="clipR"><rect x="0" y="0" width="180" height="200" rx="16"/></clipPath>
+    <clipPath id="clipW"><rect x="0" y="0" width="180" height="200" rx="16"/></clipPath>
+
+    <!-- Wood grain pattern for board bg -->
+    <pattern id="grain" x="0" y="0" width="1000" height="22" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="11" x2="1000" y2="11" stroke="#FFFFFF" stroke-width="0.4" opacity="0.025"/>
+      <line x1="0" y1="18" x2="1000" y2="18" stroke="#000000" stroke-width="0.3" opacity="0.04"/>
+    </pattern>
+
+  </defs>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PAGE BACKGROUND
+  ══════════════════════════════════════════════════════════ -->
+  <rect width="1000" height="600" fill="url(#pageBg)"/>
+  <rect width="1000" height="600" fill="url(#grain)"/>
+
+  <!-- Subtle center glow on background -->
+  <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%"   style="stop-color:#1A2535;stop-opacity:0.6"/>
+    <stop offset="100%" style="stop-color:#000000;stop-opacity:0"/>
+  </radialGradient>
+  <rect width="1000" height="600" fill="url(#bgGlow)"/>
+
+  <!-- Section label -->
+  <text x="500" y="44" font-family="Georgia, serif" font-size="13"
+        text-anchor="middle" fill="#6B4F1A" letter-spacing="6" opacity="0.8">LEXICON  —  TILE SET</text>
+  <line x1="200" y1="52" x2="800" y2="52" stroke="#3A2A08" stroke-width="1" opacity="0.6"/>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TILE HELPER MACRO  — rendered 4 times via transforms
+  ══════════════════════════════════════════════════════════ -->
+
+  <!-- ╔══════════════════════════════╗
+       ║  TILE 1 — COMMON  (letter E) ║
+       ╚══════════════════════════════╝ -->
+  <g transform="translate(70, 80)" filter="url(#tileDrop)">
+
+    <!-- 3D base / depth layer -->
+    <rect x="9" y="11" width="180" height="200" rx="16" fill="url(#tileBase)" opacity="0.85"/>
+
+    <!-- Border ring — Common (silver-grey) -->
+    <rect x="-3" y="-3" width="186" height="206" rx="18"
+          fill="none" stroke="url(#borderCommon)" stroke-width="5"/>
+
+    <!-- Tile face -->
+    <rect x="0" y="0" width="180" height="200" rx="16" fill="url(#ivoryFace)"/>
+
+    <!-- Noise/texture overlay -->
+    <rect x="0" y="0" width="180" height="200" rx="16"
+          fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#clipC)"/>
+
+    <!-- Bevel top highlight -->
+    <rect x="0" y="0" width="180" height="32" rx="16"
+          fill="url(#bevelV)" clip-path="url(#clipC)" opacity="0.7"/>
+    <!-- Bevel left highlight -->
+    <rect x="0" y="0" width="32" height="200" rx="16"
+          fill="url(#bevelH)" clip-path="url(#clipC)" opacity="0.5"/>
+    <!-- Bevel bottom shadow -->
+    <rect x="0" y="168" width="180" height="32" rx="16"
+          fill="url(#shadowV)" clip-path="url(#clipC)" opacity="0.8"/>
+    <!-- Bevel right shadow -->
+    <rect x="148" y="0" width="32" height="200" rx="16"
+          fill="url(#shadowH)" clip-path="url(#clipC)" opacity="0.7"/>
+
+    <!-- Inner engraved line -->
+    <rect x="10" y="10" width="160" height="180" rx="10"
+          fill="none" stroke="#A07830" stroke-width="1.2" opacity="0.45"/>
+
+    <!-- MAIN LETTER -->
+    <text x="90" y="155"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="132" font-weight="bold"
+          text-anchor="middle" dominant-baseline="alphabetic"
+          fill="#1C0E00" filter="url(#letterDepth)">E</text>
+
+    <!-- Score badge background -->
+    <rect x="132" y="158" width="38" height="32" rx="7" fill="url(#scoreBg)" opacity="0.88"/>
+    <!-- Score value -->
+    <text x="151" y="179"
+          font-family="Georgia, serif" font-size="18" font-weight="bold"
+          text-anchor="middle" dominant-baseline="middle"
+          fill="#C8922A">1</text>
+
+    <!-- Tier pip (top-left) — grey for common -->
+    <circle cx="22" cy="22" r="9" fill="#888899" opacity="0.8"/>
+    <circle cx="22" cy="22" r="5" fill="#AAAACC" opacity="0.6"/>
+
+    <!-- Tier label strip -->
+    <rect x="0" y="178" width="180" height="22" rx="0"
+          fill="#0A0800" opacity="0.22" clip-path="url(#clipC)"/>
+    <text x="90" y="193"
+          font-family="'Courier New', monospace" font-size="10" font-weight="bold"
+          text-anchor="middle" fill="#8A7040" letter-spacing="3">COMMON</text>
+
+  </g>
+
+  <!-- ╔═══════════════════════════════════╗
+       ║  TILE 2 — UNCOMMON  (letter N)    ║
+       ╚═══════════════════════════════════╝ -->
+  <g transform="translate(300, 80)" filter="url(#tileDrop)">
+
+    <!-- 3D base -->
+    <rect x="9" y="11" width="180" height="200" rx="16" fill="url(#tileBase)" opacity="0.85"/>
+
+    <!-- Border ring — Uncommon teal glow -->
+    <rect x="-3" y="-3" width="186" height="206" rx="18"
+          fill="none" stroke="url(#borderUncommon)" stroke-width="5"
+          filter="url(#tealGlow)"/>
+
+    <!-- Tile face -->
+    <rect x="0" y="0" width="180" height="200" rx="16" fill="url(#ivoryFace)"/>
+
+    <!-- Noise overlay -->
+    <rect x="0" y="0" width="180" height="200" rx="16"
+          fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#clipU)"/>
+
+    <!-- Bevels -->
+    <rect x="0" y="0" width="180" height="32" rx="16"
+          fill="url(#bevelV)" clip-path="url(#clipU)" opacity="0.7"/>
+    <rect x="0" y="0" width="32" height="200" rx="16"
+          fill="url(#bevelH)" clip-path="url(#clipU)" opacity="0.5"/>
+    <rect x="0" y="168" width="180" height="32" rx="16"
+          fill="url(#shadowV)" clip-path="url(#clipU)" opacity="0.8"/>
+    <rect x="148" y="0" width="32" height="200" rx="16"
+          fill="url(#shadowH)" clip-path="url(#clipU)" opacity="0.7"/>
+
+    <!-- Inner engraved line — teal tint -->
+    <rect x="10" y="10" width="160" height="180" rx="10"
+          fill="none" stroke="#00B4D8" stroke-width="1.2" opacity="0.4"/>
+
+    <!-- MAIN LETTER -->
+    <text x="90" y="155"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="132" font-weight="bold"
+          text-anchor="middle" dominant-baseline="alphabetic"
+          fill="#1C0E00" filter="url(#letterDepth)">N</text>
+
+    <!-- Score badge -->
+    <rect x="132" y="158" width="38" height="32" rx="7" fill="url(#scoreBg)" opacity="0.88"/>
+    <text x="151" y="179"
+          font-family="Georgia, serif" font-size="18" font-weight="bold"
+          text-anchor="middle" dominant-baseline="middle"
+          fill="#00D4FF">2</text>
+
+    <!-- Double-cell indicator — two small linked squares top right -->
+    <rect x="140" y="12" width="16" height="16" rx="3"
+          fill="none" stroke="#00D4FF" stroke-width="1.5" opacity="0.8"/>
+    <rect x="158" y="12" width="16" height="16" rx="3"
+          fill="none" stroke="#00D4FF" stroke-width="1.5" opacity="0.8"/>
+    <line x1="156" y1="20" x2="158" y2="20" stroke="#00D4FF" stroke-width="1.5" opacity="0.8"/>
+
+    <!-- Tier pip — teal -->
+    <circle cx="22" cy="22" r="9" fill="#006688" opacity="0.9"/>
+    <circle cx="22" cy="22" r="5" fill="#00D4FF" opacity="0.7"/>
+
+    <!-- Tier label strip -->
+    <rect x="0" y="178" width="180" height="22" rx="0"
+          fill="#001825" opacity="0.28" clip-path="url(#clipU)"/>
+    <text x="90" y="193"
+          font-family="'Courier New', monospace" font-size="10" font-weight="bold"
+          text-anchor="middle" fill="#00B4D8" letter-spacing="2">UNCOMMON</text>
+
+  </g>
+
+  <!-- ╔═══════════════════════════════╗
+       ║  TILE 3 — RARE  (letter X)    ║
+       ╚═══════════════════════════════╝ -->
+  <g transform="translate(530, 80)" filter="url(#tileDrop)">
+
+    <!-- 3D base -->
+    <rect x="9" y="11" width="180" height="200" rx="16" fill="url(#tileBase)" opacity="0.85"/>
+
+    <!-- Border ring — Rare gold glow -->
+    <rect x="-3" y="-3" width="186" height="206" rx="18"
+          fill="none" stroke="url(#borderRare)" stroke-width="6"
+          filter="url(#goldGlow)"/>
+
+    <!-- Tile face — slightly warmer for rare -->
+    <rect x="0" y="0" width="180" height="200" rx="16" fill="url(#ivoryFace)"/>
+
+    <!-- Extra warm wash on rare -->
+    <rect x="0" y="0" width="180" height="200" rx="16"
+          fill="#F5A62310" opacity="0.15" clip-path="url(#clipR)"/>
+
+    <!-- Noise overlay -->
+    <rect x="0" y="0" width="180" height="200" rx="16"
+          fill="url(#ivoryFace)" filter="url(#noise)" opacity="0.2" clip-path="url(#clipR)"/>
+
+    <!-- Bevels -->
+    <rect x="0" y="0" width="180" height="32" rx="16"
+          fill="url(#bevelV)" clip-path="url(#clipR)" opacity="0.7"/>
+    <rect x="0" y="0" width="32" height="200" rx="16"
+          fill="url(#bevelH)" clip-path="url(#clipR)" opacity="0.5"/>
+    <rect x="0" y="168" width="180" height="32" rx="16"
+          fill="url(#shadowV)" clip-path="url(#clipR)" opacity="0.8"/>
+    <rect x="148" y="0" width="32" height="200" rx="16"
+          fill="url(#shadowH)" clip-path="url(#clipR)" opacity="0.7"/>
+
+    <!-- Double inner line on rare — premium look -->
+    <rect x="10" y="10" width="160" height="180" rx="10"
+          fill="none" stroke="#C8922A" stroke-width="1.5" opacity="0.6"/>
+    <rect x="14" y="14" width="152" height="172" rx="8"
+          fill="none" stroke="#F5C842" stroke-width="0.6" opacity="0.3"/>
+
+    <!-- MAIN LETTER -->
+    <text x="90" y="155"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="132" font-weight="bold"
+          text-anchor="middle" dominant-baseline="alphabetic"
+          fill="#1C0E00" filter="url(#letterDepth)">X</text>
+
+    <!-- Score badge — gold -->
+    <rect x="132" y="158" width="38" height="32" rx="7"
+          fill="url(#scoreBg)" opacity="0.88" filter="url(#goldGlow)"/>
+    <text x="151" y="179"
+          font-family="Georgia, serif" font-size="18" font-weight="bold"
+          text-anchor="middle" dominant-baseline="middle"
+          fill="#FFD700">8</text>
+
+    <!-- Double score indicator (rare = x2) -->
+    <text x="158" y="14"
+          font-family="'Courier New', monospace" font-size="10" font-weight="bold"
+          text-anchor="middle" fill="#F5A623" opacity="0.9">×2</text>
+
+    <!-- Tier pip — gold -->
+    <circle cx="22" cy="22" r="10" fill="#8B6000" opacity="0.9"/>
+    <circle cx="22" cy="22" r="6"  fill="#F5C842" opacity="0.9"/>
+    <circle cx="22" cy="22" r="3"  fill="#FFE88A" opacity="0.8"/>
+
+    <!-- Tier label strip -->
+    <rect x="0" y="178" width="180" height="22" rx="0"
+          fill="#1A0D00" opacity="0.25" clip-path="url(#clipR)"/>
+    <text x="90" y="193"
+          font-family="'Courier New', monospace" font-size="10" font-weight="bold"
+          text-anchor="middle" fill="#F5A623" letter-spacing="5">RARE</text>
+
+  </g>
+
+  <!-- ╔════════════════════════════════╗
+       ║  TILE 4 — WILDCARD  (★)        ║
+       ╚════════════════════════════════╝ -->
+  <g transform="translate(760, 80)" filter="url(#tileDrop)">
+
+    <!-- 3D base -->
+    <rect x="9" y="11" width="180" height="200" rx="16" fill="#1A0040" opacity="0.85"/>
+
+    <!-- Border ring — purple glow -->
+    <rect x="-3" y="-3" width="186" height="206" rx="18"
+          fill="none" stroke="url(#borderWild)" stroke-width="6"
+          filter="url(#purpleGlow)"/>
+
+    <!-- Tile face — PURPLE not ivory -->
+    <rect x="0" y="0" width="180" height="200" rx="16" fill="url(#purpleFace)"/>
+
+    <!-- Noise overlay -->
+    <rect x="0" y="0" width="180" height="200" rx="16"
+          fill="url(#purpleFace)" filter="url(#noise)" opacity="0.2" clip-path="url(#clipW)"/>
+
+    <!-- Bevels -->
+    <rect x="0" y="0" width="180" height="32" rx="16"
+          fill="url(#bevelV)" clip-path="url(#clipW)" opacity="0.4"/>
+    <rect x="0" y="0" width="32" height="200" rx="16"
+          fill="url(#bevelH)" clip-path="url(#clipW)" opacity="0.3"/>
+    <rect x="0" y="168" width="180" height="32" rx="16"
+          fill="url(#shadowV)" clip-path="url(#clipW)" opacity="0.6"/>
+    <rect x="148" y="0" width="32" height="200" rx="16"
+          fill="url(#shadowH)" clip-path="url(#clipW)" opacity="0.5"/>
+
+    <!-- Arcane circle behind star -->
+    <circle cx="90" cy="95" r="62" fill="none" stroke="#E0AAFF" stroke-width="1" opacity="0.25"/>
+    <circle cx="90" cy="95" r="54" fill="none" stroke="#C060FF" stroke-width="0.6" opacity="0.2"/>
+    <!-- Runic marks around circle -->
+    <text x="90"  y="38"  font-family="serif" font-size="13" text-anchor="middle" fill="#E0AAFF" opacity="0.5">ᚠ</text>
+    <text x="143" y="72"  font-family="serif" font-size="13" text-anchor="middle" fill="#E0AAFF" opacity="0.5">ᚢ</text>
+    <text x="143" y="126" font-family="serif" font-size="13" text-anchor="middle" fill="#E0AAFF" opacity="0.5">ᚦ</text>
+    <text x="90"  y="158" font-family="serif" font-size="13" text-anchor="middle" fill="#E0AAFF" opacity="0.5">ᚨ</text>
+    <text x="37"  y="126" font-family="serif" font-size="13" text-anchor="middle" fill="#E0AAFF" opacity="0.5">ᚱ</text>
+    <text x="37"  y="72"  font-family="serif" font-size="13" text-anchor="middle" fill="#E0AAFF" opacity="0.5">ᚲ</text>
+
+    <!-- Inner engraved line — purple -->
+    <rect x="10" y="10" width="160" height="180" rx="10"
+          fill="none" stroke="#C060FF" stroke-width="1.2" opacity="0.4"/>
+
+    <!-- STAR SYMBOL -->
+    <text x="90" y="148"
+          font-family="Georgia, serif"
+          font-size="118" font-weight="bold"
+          text-anchor="middle" dominant-baseline="alphabetic"
+          fill="#FFFFFF" filter="url(#purpleGlow)">★</text>
+
+    <!-- Score badge — infinity -->
+    <rect x="132" y="158" width="38" height="32" rx="7"
+          fill="#0D0020" opacity="0.88" filter="url(#purpleGlow)"/>
+    <text x="151" y="179"
+          font-family="Georgia, serif" font-size="20" font-weight="bold"
+          text-anchor="middle" dominant-baseline="middle"
+          fill="#E0AAFF">∞</text>
+
+    <!-- Tier pip — purple -->
+    <circle cx="22" cy="22" r="10" fill="#4A0E8F" opacity="0.95"/>
+    <circle cx="22" cy="22" r="6"  fill="#C060FF" opacity="0.9"/>
+    <circle cx="22" cy="22" r="3"  fill="#F0C0FF" opacity="0.8"/>
+
+    <!-- Tier label strip -->
+    <rect x="0" y="178" width="180" height="22" rx="0"
+          fill="#050010" opacity="0.45" clip-path="url(#clipW)"/>
+    <text x="90" y="193"
+          font-family="'Courier New', monospace" font-size="10" font-weight="bold"
+          text-anchor="middle" fill="#D080FF" letter-spacing="2">WILDCARD</text>
+
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TIER LABELS BELOW TILES
+  ══════════════════════════════════════════════════════════ -->
+  <g font-family="Georgia, serif" font-size="15" text-anchor="middle" fill="#8B7040" letter-spacing="2">
+    <text x="160"  y="325">Common</text>
+    <text x="390"  y="325">Uncommon</text>
+    <text x="620"  y="325">Rare</text>
+    <text x="850"  y="325">Wildcard</text>
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════════
+       BOTTOM — SPECIAL TILES STRIP  (smaller, 100×112)
+  ══════════════════════════════════════════════════════════ -->
+
+  <text x="500" y="370" font-family="Georgia, serif" font-size="12"
+        text-anchor="middle" fill="#6B4F1A" letter-spacing="5" opacity="0.7">SPECIAL TILES</text>
+  <line x1="200" y1="377" x2="800" y2="377" stroke="#3A2A08" stroke-width="1" opacity="0.5"/>
+
+  <!-- ── VAULT TILE ── (armoured, requires 2 hits) -->
+  <g transform="translate(112, 390)" filter="url(#tileDrop)">
+    <rect x="5" y="6" width="100" height="112" rx="10" fill="url(#tileBase)" opacity="0.8"/>
+    <rect x="-2" y="-2" width="104" height="116" rx="12"
+          fill="none" stroke="#888899" stroke-width="3.5"/>
+    <rect x="0" y="0" width="100" height="112" rx="10" fill="url(#ivoryFace)"/>
+    <!-- Armour plate overlay on vault -->
+    <rect x="0" y="0" width="100" height="112" rx="10"
+          fill="#334455" opacity="0.22"/>
+    <!-- Chain/lock pattern -->
+    <rect x="30" y="38" width="40" height="36" rx="5"
+          fill="none" stroke="#8899AA" stroke-width="1.5" opacity="0.7"/>
+    <rect x="38" y="30" width="24" height="16" rx="8"
+          fill="none" stroke="#8899AA" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="50" cy="58" r="5" fill="#8899AA" opacity="0.8"/>
+    <line x1="50" y1="58" x2="50" y2="66" stroke="#8899AA" stroke-width="2" opacity="0.8"/>
+    <!-- Hit counter dots -->
+    <circle cx="36" cy="88" r="5" fill="#E94560" opacity="0.9"/>
+    <circle cx="50" cy="88" r="5" fill="#334455" stroke="#8899AA" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="64" cy="88" r="5" fill="#334455" stroke="#8899AA" stroke-width="1.5" opacity="0.7"/>
+    <rect x="0" y="98" width="100" height="14" rx="0"
+          fill="#0A0800" opacity="0.2"/>
+    <text x="50" y="109" font-family="'Courier New', monospace" font-size="8"
+          font-weight="bold" text-anchor="middle" fill="#8899AA" letter-spacing="2">VAULT</text>
+  </g>
+
+  <!-- ── POISON GLYPH ── (blank decoy) -->
+  <g transform="translate(262, 390)" filter="url(#tileDrop)">
+    <rect x="5" y="6" width="100" height="112" rx="10" fill="#0A1500" opacity="0.8"/>
+    <rect x="-2" y="-2" width="104" height="116" rx="12"
+          fill="none" stroke="#2DC653" stroke-width="3.5"/>
+    <!-- Dark face for poison -->
+    <rect x="0" y="0" width="100" height="112" rx="10" fill="#0D1A0D"/>
+    <rect x="0" y="0" width="100" height="112" rx="10" fill="#1A3A1A" opacity="0.5"/>
+    <!-- Skull-ish poison symbol -->
+    <circle cx="50" cy="44" r="18" fill="none" stroke="#2DC653" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="43" cy="40" r="4" fill="#2DC653" opacity="0.8"/>
+    <circle cx="57" cy="40" r="4" fill="#2DC653" opacity="0.8"/>
+    <!-- Crossbones -->
+    <line x1="36" y1="62" x2="64" y2="82" stroke="#2DC653" stroke-width="1.5" opacity="0.6"/>
+    <line x1="64" y1="62" x2="36" y2="82" stroke="#2DC653" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="36" cy="62" r="4" fill="#2DC653" opacity="0.6"/>
+    <circle cx="64" cy="62" r="4" fill="#2DC653" opacity="0.6"/>
+    <circle cx="36" cy="82" r="4" fill="#2DC653" opacity="0.6"/>
+    <circle cx="64" cy="82" r="4" fill="#2DC653" opacity="0.6"/>
+    <rect x="0" y="98" width="100" height="14" rx="0"
+          fill="#000D00" opacity="0.4"/>
+    <text x="50" y="109" font-family="'Courier New', monospace" font-size="7"
+          font-weight="bold" text-anchor="middle" fill="#2DC653" letter-spacing="1">POISON GLYPH</text>
+  </g>
+
+  <!-- ── MIRROR TILE ── -->
+  <g transform="translate(412, 390)" filter="url(#tileDrop)">
+    <rect x="5" y="6" width="100" height="112" rx="10" fill="url(#tileBase)" opacity="0.8"/>
+    <rect x="-2" y="-2" width="104" height="116" rx="12"
+          fill="none" stroke="#00B4D8" stroke-width="3.5"/>
+    <rect x="0" y="0" width="100" height="112" rx="10" fill="url(#ivoryFace)"/>
+    <!-- Mirror reflection: two R letters, one inverted -->
+    <text x="34" y="88" font-family="Georgia, serif" font-size="58" font-weight="bold"
+          text-anchor="middle" fill="#1C0E00" opacity="0.85">R</text>
+    <!-- Mirrored R (flipped) -->
+    <g transform="translate(100,0) scale(-1,1)">
+      <text x="34" y="88" font-family="Georgia, serif" font-size="58" font-weight="bold"
+            text-anchor="middle" fill="#00B4D8" opacity="0.4">R</text>
+    </g>
+    <!-- Mirror axis line -->
+    <line x1="50" y1="10" x2="50" y2="98"
+          stroke="#00B4D8" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    <rect x="0" y="98" width="100" height="14" rx="0"
+          fill="#001825" opacity="0.25"/>
+    <text x="50" y="109" font-family="'Courier New', monospace" font-size="8"
+          font-weight="bold" text-anchor="middle" fill="#00B4D8" letter-spacing="2">MIRROR</text>
+  </g>
+
+  <!-- ── CHARGED TILE ── -->
+  <g transform="translate(562, 390)" filter="url(#tileDrop)">
+    <rect x="5" y="6" width="100" height="112" rx="10" fill="url(#tileBase)" opacity="0.8"/>
+    <!-- Charged: gold + electric yellow border -->
+    <rect x="-2" y="-2" width="104" height="116" rx="12"
+          fill="none" stroke="#FFE066" stroke-width="3.5" filter="url(#goldGlow)"/>
+    <rect x="0" y="0" width="100" height="112" rx="10" fill="url(#ivoryFace)"/>
+    <!-- Lightning bolt -->
+    <polygon points="54,12 40,52 50,52 46,100 64,50 54,50"
+             fill="#FFE066" opacity="0.9" filter="url(#goldGlow)"/>
+    <!-- Electric arcs -->
+    <path d="M 22,30 Q 30,20 22,10" stroke="#FFE066" stroke-width="1.5"
+          fill="none" opacity="0.5" stroke-dasharray="2,2"/>
+    <path d="M 78,30 Q 70,20 78,10" stroke="#FFE066" stroke-width="1.5"
+          fill="none" opacity="0.5" stroke-dasharray="2,2"/>
+    <path d="M 16,65 Q 8,55 16,45" stroke="#FFE066" stroke-width="1"
+          fill="none" opacity="0.4" stroke-dasharray="2,2"/>
+    <path d="M 84,65 Q 92,55 84,45" stroke="#FFE066" stroke-width="1"
+          fill="none" opacity="0.4" stroke-dasharray="2,2"/>
+    <rect x="0" y="98" width="100" height="14" rx="0"
+          fill="#1A1000" opacity="0.25"/>
+    <text x="50" y="109" font-family="'Courier New', monospace" font-size="8"
+          font-weight="bold" text-anchor="middle" fill="#FFD700" letter-spacing="2">CHARGED</text>
+  </g>
+
+  <!-- Special tile labels -->
+  <g font-family="Georgia, serif" font-size="12" text-anchor="middle"
+     fill="#6B5030" letter-spacing="1" opacity="0.7">
+    <text x="162" y="522">Vault</text>
+    <text x="312" y="522">Poison</text>
+    <text x="462" y="522">Mirror</text>
+    <text x="612" y="522">Charged</text>
+  </g>
+
+  <!-- ══ BOTTOM LEGEND BAR ═══════════════════════════════════════ -->
+  <rect x="30" y="545" width="940" height="1" fill="#3A2A08" opacity="0.6"/>
+  <text x="500" y="570" font-family="'Courier New', monospace" font-size="10"
+        text-anchor="middle" fill="#4A3A18" letter-spacing="4" opacity="0.6">
+    HIT ANY CELL  •  HARVEST THE LETTER  •  SPELL YOUR WEAPON
+  </text>
+
+</svg>

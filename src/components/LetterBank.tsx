@@ -1,0 +1,60 @@
+import React from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { LetterTile } from '../constants';
+import { Tile } from './Tile';
+
+interface LetterBankProps {
+  bank: LetterTile[];
+  playerId?: 1 | 2;
+  onTileClick?: (tile: LetterTile) => void;
+  title?: string;
+}
+
+export const LetterBank: React.FC<LetterBankProps> = ({ bank, playerId, onTileClick, title = "Letter Bank" }) => {
+  return (
+    <div className="flex flex-col gap-2 p-4 bg-slate-900 rounded-2xl shadow-xl border border-slate-800 w-full">
+      <div className="flex justify-between items-center px-2">
+        <h3 className="text-sm font-mono font-bold text-slate-500 uppercase tracking-widest">
+          {title}
+        </h3>
+        <span className="text-xs font-mono font-bold text-slate-600">
+          {bank.length} LETTERS
+        </span>
+      </div>
+      
+      <div className="flex flex-wrap gap-2 min-h-[60px] p-2 bg-slate-950 rounded-lg border border-slate-800/50">
+        <AnimatePresence>
+          {bank.map((tile, idx) => (
+            <motion.div
+              key={tile.uniqueId || `${tile.id}-${idx}`}
+              layout
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              className="w-12 h-12 [container-type:size]"
+              transition={{ 
+                type: 'spring', 
+                stiffness: 200, 
+                damping: 25,
+                layout: { duration: 0.3 }
+              }}
+            >
+              <Tile 
+                tile={tile} 
+                playerId={playerId}
+                onClick={() => onTileClick?.(tile)}
+                className="w-full h-full"
+                showPoints={false}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+        {bank.length === 0 && (
+          <div className="flex items-center justify-center w-full h-full text-slate-700 text-xs font-mono italic">
+            No letters harvested yet...
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};

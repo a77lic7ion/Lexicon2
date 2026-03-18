@@ -1,0 +1,759 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<!--
+  ============================================================
+  LEXICON — TILE SET  SHEET 3
+  ALL TILES: 56×56px  ·  CELL: 70×70px  ·  MARGIN: 7px
+
+  SECTION A — WILDCARD + SPECIAL TILES (5 tiles)
+    Wildcard ★     — purple face, any letter
+    Vault          — armoured, 2 hits to harvest
+    Poison Glyph   — decoy, forces discard
+    Mirror         — copy not destroy
+    Charged        — bonus shot on row/col clear
+
+  SECTION B — GRID STATE MARKERS (8 tiles)
+  Each 56×56px, same border treatment as letter tiles
+  but communicating game state:
+
+  YOUR GRID (enemy fired at you):
+    Your Hit    — your tile was struck (red X, cracked face)
+    Your Miss   — enemy missed your cell (grey dot marker)
+
+  ENEMY GRID (you fired at them):
+    Enemy Hit   — you scored, letter harvested (gold burst)
+    Enemy Miss  — you missed, cell empty (dark dot)
+
+  BONUS STATES:
+    Vault Hit 1 — first hit, armoured marker shown
+    Vault Hit 2 — second hit, tile destroyed
+    Bonus Draw  — uncommon second cell hit (teal flash)
+    Charged Trigger — last in row/col (lightning)
+  ============================================================
+-->
+  <defs>
+    <!-- Backgrounds -->
+    <linearGradient id="pageBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#080D13"/>
+    </linearGradient>
+
+    <!-- Tile faces -->
+    <linearGradient id="ivoryFace" x1="10%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%"   style="stop-color:#F7EDD0"/>
+      <stop offset="35%"  style="stop-color:#EDD9A3"/>
+      <stop offset="75%"  style="stop-color:#D4B870"/>
+      <stop offset="100%" style="stop-color:#B8963A"/>
+    </linearGradient>
+    <linearGradient id="purpleFace" x1="10%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%"   style="stop-color:#D4A0FF"/>
+      <stop offset="40%"  style="stop-color:#9B40E0"/>
+      <stop offset="100%" style="stop-color:#4A0E8F"/>
+    </linearGradient>
+    <linearGradient id="darkFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#1A2535"/>
+      <stop offset="100%" style="stop-color:#0A1018"/>
+    </linearGradient>
+    <linearGradient id="redFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#2A0808"/>
+      <stop offset="100%" style="stop-color:#0A0202"/>
+    </linearGradient>
+    <linearGradient id="greenFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#082208"/>
+      <stop offset="100%" style="stop-color:#020A02"/>
+    </linearGradient>
+
+    <!-- Bevels -->
+    <linearGradient id="bevelV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#FFFFFF;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="bevelH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#FFFFFF;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="shadowV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#5A3A00;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#3A2000;stop-opacity:0.75"/>
+    </linearGradient>
+    <linearGradient id="shadowH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#5A3A00;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#3A2000;stop-opacity:0.7"/>
+    </linearGradient>
+
+    <!-- 3D bases -->
+    <linearGradient id="tileBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#4A3000"/>
+      <stop offset="100%" style="stop-color:#1A1000"/>
+    </linearGradient>
+    <linearGradient id="purpleBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#1A0040"/>
+      <stop offset="100%" style="stop-color:#0A0020"/>
+    </linearGradient>
+
+    <!-- Borders -->
+    <linearGradient id="borderPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#E8AAFF"/>
+      <stop offset="50%"  style="stop-color:#C060FF"/>
+      <stop offset="100%" style="stop-color:#7020C0"/>
+    </linearGradient>
+    <linearGradient id="borderGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#FFE066"/>
+      <stop offset="50%"  style="stop-color:#F5A623"/>
+      <stop offset="100%" style="stop-color:#B87820"/>
+    </linearGradient>
+    <linearGradient id="borderGrey" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#888899"/>
+      <stop offset="100%" style="stop-color:#555566"/>
+    </linearGradient>
+    <linearGradient id="borderGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#44FF88"/>
+      <stop offset="100%" style="stop-color:#008844"/>
+    </linearGradient>
+    <linearGradient id="borderTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#00FFEE"/>
+      <stop offset="100%" style="stop-color:#0088BB"/>
+    </linearGradient>
+    <linearGradient id="borderRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#FF6666"/>
+      <stop offset="100%" style="stop-color:#AA0000"/>
+    </linearGradient>
+
+    <!-- Score badge bg -->
+    <linearGradient id="scoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#2A1800"/>
+      <stop offset="100%" style="stop-color:#0D0800"/>
+    </linearGradient>
+
+    <!-- Hit burst radial -->
+    <radialGradient id="hitBurst" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   style="stop-color:#FFD700;stop-opacity:0.9"/>
+      <stop offset="50%"  style="stop-color:#FF6600;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#FF2200;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="yourHitBurst" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   style="stop-color:#FF4444;stop-opacity:0.9"/>
+      <stop offset="50%"  style="stop-color:#AA0000;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#440000;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- FILTERS -->
+    <filter id="letterDepth" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#1A0A00" flood-opacity="0.65"/>
+    </filter>
+    <filter id="tileDrop" x="-30%" y="-25%" width="170%" height="165%">
+      <feDropShadow dx="4" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+    <filter id="purpleGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#C060FF" flood-opacity="0.7" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#F5A623" flood-opacity="0.7" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="redGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#FF2200" flood-opacity="0.8" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="tealGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#00FFEE" flood-opacity="0.6" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="greenGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#00FF88" flood-opacity="0.7" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feBlend in="SourceGraphic" in2="g" mode="multiply" result="b"/>
+      <feComposite in="b" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <clipPath id="tc"><rect width="56" height="56" rx="7"/></clipPath>
+
+    <pattern id="grain" x="0" y="0" width="1200" height="20" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="10" x2="1200" y2="10" stroke="#FFFFFF" stroke-width="0.3" opacity="0.02"/>
+    </pattern>
+  </defs>
+
+  <!-- PAGE -->
+  <rect width="1200" height="900" fill="url(#pageBg)"/>
+  <rect width="1200" height="900" fill="url(#grain)"/>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION A — WILDCARD + SPECIAL TILES
+  ═══════════════════════════════════════════════ -->
+  <text x="600" y="32" font-family="Georgia,serif" font-size="11"
+        text-anchor="middle" fill="#6B4F1A" letter-spacing="5" opacity="0.8">WILDCARD  +  SPECIAL TILES  —  56×56px</text>
+  <line x1="60" y1="40" x2="1140" y2="40" stroke="#3A2A08" stroke-width="1" opacity="0.4"/>
+
+  <!-- Positions: 5 tiles, spacing 200px, first at x=100 -->
+  <!-- ── WILDCARD ★ ── -->
+  <g transform="translate(100,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#purpleBase)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderPurple)" stroke-width="3" filter="url(#purpleGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#purpleFace)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#purpleFace)" filter="url(#noise)" opacity="0.18" clip-path="url(#tc)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.4"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.3"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.4"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#C060FF" stroke-width="0.8" opacity="0.4"/>
+    <!-- Arcane ring behind star -->
+    <circle cx="28" cy="26" r="16" fill="none" stroke="#E0AAFF" stroke-width="0.6" opacity="0.3"/>
+    <!-- Star glyph -->
+    <text x="28" y="38" font-family="Georgia,serif" font-size="30" font-weight="bold"
+          text-anchor="middle" fill="#FFFFFF" filter="url(#purpleGlow)">★</text>
+    <!-- Score: infinity -->
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="#0D0020" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold"
+          text-anchor="middle" fill="#E0AAFF">∞</text>
+    <!-- Tier pip -->
+    <circle cx="8" cy="8" r="4" fill="#4A0E8F" opacity="0.95"/>
+    <circle cx="8" cy="8" r="2.5" fill="#C060FF" opacity="0.9"/>
+    <circle cx="8" cy="8" r="1.2" fill="#F0C0FF" opacity="0.8"/>
+    <!-- Label -->
+    <rect x="0" y="47" width="56" height="9" fill="#050010" opacity="0.4" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold"
+          text-anchor="middle" fill="#D080FF" letter-spacing="1">WILDCARD</text>
+  </g>
+  <text x="128" y="132" font-family="Georgia,serif" font-size="10" text-anchor="middle" fill="#9040CC" opacity="0.8">★  ·  any letter</text>
+
+  <!-- ── VAULT ── grey-silver, padlock icon -->
+  <g transform="translate(300,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#1A1A2A" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderGrey)" stroke-width="3"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" opacity="0.6"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#334455" opacity="0.3"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.4"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.3"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.6"/>
+    <rect x="40" y="0" width="16" height="56" rx="7" fill="url(#shadowH)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#8899AA" stroke-width="0.8" opacity="0.35"/>
+    <!-- Padlock body -->
+    <rect x="18" y="26" width="20" height="18" rx="3" fill="none" stroke="#8899AA" stroke-width="1.5" opacity="0.8"/>
+    <!-- Padlock shackle -->
+    <path d="M 21,26 L 21,20 Q 21,14 28,14 Q 35,14 35,20 L 35,26"
+          fill="none" stroke="#8899AA" stroke-width="1.5" opacity="0.8"/>
+    <!-- Keyhole -->
+    <circle cx="28" cy="33" r="3" fill="#8899AA" opacity="0.7"/>
+    <rect x="26" y="33" width="4" height="5" rx="1" fill="#8899AA" opacity="0.7"/>
+    <!-- Hit count dots -->
+    <circle cx="20" cy="48" r="3" fill="#E94560" opacity="0.9"/>
+    <circle cx="28" cy="48" r="3" fill="#334455" stroke="#8899AA" stroke-width="1" opacity="0.7"/>
+    <!-- Tier pip -->
+    <circle cx="8" cy="8" r="4" fill="#556677" opacity="0.85"/>
+    <circle cx="8" cy="8" r="2.5" fill="#AABBCC" opacity="0.7"/>
+    <!-- Label -->
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold"
+          text-anchor="middle" fill="#8899AA" letter-spacing="1.5">VAULT</text>
+  </g>
+  <text x="328" y="132" font-family="Georgia,serif" font-size="10" text-anchor="middle" fill="#778899" opacity="0.8">Vault  ·  2 hits</text>
+
+  <!-- ── POISON GLYPH ── dark green, skull -->
+  <g transform="translate(500,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#0A1500" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderGreen)" stroke-width="3" filter="url(#greenGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#0D1A0D"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#1A3A1A" opacity="0.5"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.2"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#2DC653" stroke-width="0.8" opacity="0.35"/>
+    <!-- Skull -->
+    <circle cx="28" cy="22" r="10" fill="none" stroke="#2DC653" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="24" cy="20" r="3" fill="#2DC653" opacity="0.9"/>
+    <circle cx="32" cy="20" r="3" fill="#2DC653" opacity="0.9"/>
+    <!-- Crossbones -->
+    <line x1="16" y1="36" x2="40" y2="48" stroke="#2DC653" stroke-width="1.5" opacity="0.7"/>
+    <line x1="40" y1="36" x2="16" y2="48" stroke="#2DC653" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="16" cy="36" r="3" fill="#2DC653" opacity="0.7"/>
+    <circle cx="40" cy="36" r="3" fill="#2DC653" opacity="0.7"/>
+    <circle cx="16" cy="48" r="3" fill="#2DC653" opacity="0.7"/>
+    <circle cx="40" cy="48" r="3" fill="#2DC653" opacity="0.7"/>
+    <!-- Tier pip -->
+    <circle cx="8" cy="8" r="4" fill="#006622" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#2DC653" opacity="0.8"/>
+    <!-- Label -->
+    <rect x="0" y="47" width="56" height="9" fill="#000D00" opacity="0.5" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="4.5" font-weight="bold"
+          text-anchor="middle" fill="#2DC653" letter-spacing="1">POISON GLYPH</text>
+  </g>
+  <text x="528" y="132" font-family="Georgia,serif" font-size="10" text-anchor="middle" fill="#2DC653" opacity="0.8">Poison  ·  discard</text>
+
+  <!-- ── MIRROR ── teal, reflected R -->
+  <g transform="translate(700,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBase)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.4"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.6"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#00A0C0" stroke-width="0.8" opacity="0.4"/>
+    <!-- Normal R left half -->
+    <text x="18" y="42" font-family="Georgia,'Times New Roman',serif"
+          font-size="28" font-weight="bold" text-anchor="middle" fill="#1C0E00" opacity="0.85">R</text>
+    <!-- Mirrored R right half (flipped) -->
+    <g transform="translate(56,0) scale(-1,1)">
+      <text x="18" y="42" font-family="Georgia,'Times New Roman',serif"
+            font-size="28" font-weight="bold" text-anchor="middle" fill="#00B4D8" opacity="0.45">R</text>
+    </g>
+    <!-- Mirror axis line -->
+    <line x1="28" y1="8" x2="28" y2="46"
+          stroke="#00D4FF" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.6"/>
+    <!-- Tier pip -->
+    <circle cx="8" cy="8" r="4" fill="#005566" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#00D4FF" opacity="0.8"/>
+    <!-- Label -->
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold"
+          text-anchor="middle" fill="#00A0C0" letter-spacing="1.5">MIRROR</text>
+  </g>
+  <text x="728" y="132" font-family="Georgia,serif" font-size="10" text-anchor="middle" fill="#00B4D8" opacity="0.8">Mirror  ·  copy</text>
+
+  <!-- ── CHARGED ── gold, lightning bolt -->
+  <g transform="translate(900,55)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBase)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderGold)" stroke-width="3" filter="url(#goldGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.5"/>
+    <rect x="0" y="0" width="16" height="56" rx="7" fill="url(#bevelH)" clip-path="url(#tc)" opacity="0.4"/>
+    <rect x="0" y="40" width="56" height="16" rx="7" fill="url(#shadowV)" clip-path="url(#tc)" opacity="0.6"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#C8922A" stroke-width="0.8" opacity="0.4"/>
+    <!-- Lightning bolt -->
+    <polygon points="30,6  22,28  28,28  20,50  36,24  30,24"
+             fill="#FFE066" opacity="0.9" filter="url(#goldGlow)"/>
+    <!-- Electric arcs -->
+    <path d="M 36,10 Q 42,14 38,20" stroke="#FFE066" stroke-width="1" fill="none" opacity="0.5" stroke-dasharray="2,2"/>
+    <path d="M 18,32 Q 12,36 16,42" stroke="#FFE066" stroke-width="1" fill="none" opacity="0.5" stroke-dasharray="2,2"/>
+    <!-- Tier pip — gold -->
+    <circle cx="8" cy="8" r="4" fill="#8B6000" opacity="0.9"/>
+    <circle cx="8" cy="8" r="2.5" fill="#F5C842" opacity="0.9"/>
+    <circle cx="8" cy="8" r="1.2" fill="#FFE88A" opacity="0.8"/>
+    <!-- Label -->
+    <rect x="0" y="47" width="56" height="9" fill="#1A1000" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5.5" font-weight="bold"
+          text-anchor="middle" fill="#F5A623" letter-spacing="1">CHARGED</text>
+  </g>
+  <text x="928" y="132" font-family="Georgia,serif" font-size="10" text-anchor="middle" fill="#F5A623" opacity="0.8">Charged  ·  bonus shot</text>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION B — GRID STATE MARKERS
+  ═══════════════════════════════════════════════ -->
+  <line x1="60" y1="150" x2="1140" y2="150" stroke="#2A1A08" stroke-width="1" opacity="0.4"/>
+  <text x="600" y="168" font-family="Georgia,serif" font-size="11"
+        text-anchor="middle" fill="#6B4F1A" letter-spacing="5" opacity="0.8">GRID STATE MARKERS  —  56×56px</text>
+
+  <!-- ── YOUR GRID STATES (top row, y=185) ── -->
+  <text x="250" y="200" font-family="'Courier New',monospace" font-size="9"
+        text-anchor="middle" fill="#AA4444" letter-spacing="3" opacity="0.7">YOUR GRID</text>
+
+  <!-- YOUR GRID — EMPTY (untouched, just the tile on your side) -->
+  <g transform="translate(60,210)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBase)" opacity="0.6"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="#3A5A3A" stroke-width="2" opacity="0.5"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" opacity="0.4"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#4A6A4A" stroke-width="0.8" opacity="0.3"/>
+    <!-- Face shows letter placeholder -->
+    <text x="28" y="38" font-family="Georgia,serif" font-size="22" font-weight="bold"
+          text-anchor="middle" fill="#1C0E00" opacity="0.25">?</text>
+    <!-- Thin double border to show it's YOUR grid -->
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#2A4A2A" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold"
+          text-anchor="middle" fill="#4A6A4A" letter-spacing="1">YOUR TILE</text>
+  </g>
+  <text x="88" y="288" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#4A6A4A" opacity="0.7">safe</text>
+
+  <!-- YOUR GRID — HIT (enemy struck your tile — red, cracked) -->
+  <g transform="translate(200,210)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#1A0000" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderRed)" stroke-width="3" filter="url(#redGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" opacity="0.5"/>
+    <!-- Red damage overlay -->
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#FF2200" opacity="0.25" clip-path="url(#tc)"/>
+    <!-- Burst behind cracks -->
+    <circle cx="28" cy="28" r="24" fill="url(#yourHitBurst)" opacity="0.6"/>
+    <!-- Crack lines -->
+    <path d="M 14,8  L 28,28 L 20,46" stroke="#000000" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M 42,10 L 28,28 L 36,48" stroke="#000000" stroke-width="1.5" fill="none" opacity="0.4"/>
+    <path d="M 4,28  L 16,28 L 28,28 L 42,22 L 54,28" stroke="#000000" stroke-width="1" fill="none" opacity="0.4"/>
+    <!-- Red X -->
+    <line x1="14" y1="14" x2="42" y2="42" stroke="#FF4444" stroke-width="3" opacity="0.85" filter="url(#redGlow)"/>
+    <line x1="42" y1="14" x2="14" y2="42" stroke="#FF4444" stroke-width="3" opacity="0.85" filter="url(#redGlow)"/>
+    <!-- Double border -->
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#FF4444" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="47" width="56" height="9" fill="#1A0000" opacity="0.5" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold"
+          text-anchor="middle" fill="#FF6666" letter-spacing="1">YOUR HIT</text>
+  </g>
+  <text x="228" y="288" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#FF4444" opacity="0.8">tile struck</text>
+
+  <!-- YOUR GRID — MISSED (enemy missed, empty cell) -->
+  <g transform="translate(340,210)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#0A0E14" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="#334455" stroke-width="2.5" opacity="0.7"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#0D1520" opacity="0.9"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#334455" stroke-width="0.8" opacity="0.4"/>
+    <!-- Grey dot -->
+    <circle cx="28" cy="28" r="7" fill="none" stroke="#556677" stroke-width="2" opacity="0.8"/>
+    <circle cx="28" cy="28" r="3" fill="#556677" opacity="0.6"/>
+    <!-- Ripple rings (splash) -->
+    <circle cx="28" cy="28" r="14" fill="none" stroke="#334455" stroke-width="1" opacity="0.4"/>
+    <circle cx="28" cy="28" r="20" fill="none" stroke="#223344" stroke-width="0.8" opacity="0.25"/>
+    <!-- Double border -->
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#334455" stroke-width="1" opacity="0.3"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold"
+          text-anchor="middle" fill="#556677" letter-spacing="1">THEIR MISS</text>
+  </g>
+  <text x="368" y="288" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#556677" opacity="0.7">enemy missed</text>
+
+  <!-- ── ENEMY GRID STATES (right side, y=185) ── -->
+  <text x="800" y="200" font-family="'Courier New',monospace" font-size="9"
+        text-anchor="middle" fill="#AA8800" letter-spacing="3" opacity="0.7">ENEMY GRID</text>
+
+  <!-- ENEMY GRID — UNKNOWN (not fired at yet) -->
+  <g transform="translate(600,210)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#070E18" opacity="0.9"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="#1A2A3A" stroke-width="2.5" opacity="0.8"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#0A1220"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#1A2A3A" stroke-width="0.8" opacity="0.4"/>
+    <!-- Targeting reticle (faint — not yet fired) -->
+    <circle cx="28" cy="28" r="16" fill="none" stroke="#2A3A4A" stroke-width="1" opacity="0.5" stroke-dasharray="3,3"/>
+    <line x1="28" y1="14" x2="28" y2="20" stroke="#2A3A4A" stroke-width="1" opacity="0.5"/>
+    <line x1="28" y1="36" x2="28" y2="42" stroke="#2A3A4A" stroke-width="1" opacity="0.5"/>
+    <line x1="14" y1="28" x2="20" y2="28" stroke="#2A3A4A" stroke-width="1" opacity="0.5"/>
+    <line x1="36" y1="28" x2="42" y2="28" stroke="#2A3A4A" stroke-width="1" opacity="0.5"/>
+    <!-- Double border -->
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#1A2A3A" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold"
+          text-anchor="middle" fill="#2A3A4A" letter-spacing="1">UNKNOWN</text>
+  </g>
+  <text x="628" y="288" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#2A3A4A" opacity="0.7">not fired</text>
+
+  <!-- ENEMY GRID — YOU HIT (you scored, gold burst) -->
+  <g transform="translate(740,210)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#1A0E00" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderGold)" stroke-width="3" filter="url(#goldGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#1A1000"/>
+    <!-- Gold burst -->
+    <circle cx="28" cy="28" r="22" fill="url(#hitBurst)" opacity="0.7"/>
+    <!-- Explosion shards -->
+    <polygon points="28,6  24,20 32,20"   fill="#FFD700" opacity="0.8" filter="url(#goldGlow)"/>
+    <polygon points="50,28 36,24 36,32"   fill="#FFD700" opacity="0.7" filter="url(#goldGlow)"/>
+    <polygon points="28,50 24,36 32,36"   fill="#FFD700" opacity="0.8" filter="url(#goldGlow)"/>
+    <polygon points="6,28  20,24 20,32"   fill="#FFD700" opacity="0.7" filter="url(#goldGlow)"/>
+    <polygon points="44,12 36,22 42,26"   fill="#FFEE88" opacity="0.6"/>
+    <polygon points="12,12 22,22 18,28"   fill="#FFEE88" opacity="0.6"/>
+    <!-- Crosshair centre -->
+    <circle cx="28" cy="28" r="6" fill="#FFD700" opacity="0.9" filter="url(#goldGlow)"/>
+    <circle cx="28" cy="28" r="3" fill="#FFFFFF"/>
+    <!-- Double border -->
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+    <rect x="0" y="47" width="56" height="9" fill="#1A1000" opacity="0.4" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold"
+          text-anchor="middle" fill="#F5C842" letter-spacing="1.5">HIT  ✓</text>
+  </g>
+  <text x="768" y="288" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#F5A623" opacity="0.8">scored</text>
+
+  <!-- ENEMY GRID — YOU MISSED (empty, dark ripple) -->
+  <g transform="translate(880,210)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#070E18" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="#2A3A4A" stroke-width="2.5" opacity="0.6"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#0A1220"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#2A3A4A" stroke-width="0.8" opacity="0.3"/>
+    <!-- Miss dot with ripple -->
+    <circle cx="28" cy="28" r="5" fill="#445566" opacity="0.8"/>
+    <circle cx="28" cy="28" r="11" fill="none" stroke="#334455" stroke-width="1.2" opacity="0.6"/>
+    <circle cx="28" cy="28" r="18" fill="none" stroke="#223344" stroke-width="0.8" opacity="0.35"/>
+    <!-- X mark (faint — empty confirmed) -->
+    <line x1="22" y1="22" x2="34" y2="34" stroke="#445566" stroke-width="1.5" opacity="0.5"/>
+    <line x1="34" y1="22" x2="22" y2="34" stroke="#445566" stroke-width="1.5" opacity="0.5"/>
+    <!-- Double border -->
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#2A3A4A" stroke-width="1" opacity="0.3"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold"
+          text-anchor="middle" fill="#445566" letter-spacing="1.5">MISS  ✗</text>
+  </g>
+  <text x="908" y="288" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#445566" opacity="0.7">empty confirmed</text>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION C — BONUS STATE MARKERS
+  ═══════════════════════════════════════════════ -->
+  <line x1="60" y1="306" x2="1140" y2="306" stroke="#2A1A08" stroke-width="1" opacity="0.4"/>
+  <text x="600" y="323" font-family="Georgia,serif" font-size="11"
+        text-anchor="middle" fill="#6B4F1A" letter-spacing="5" opacity="0.8">BONUS STATE MARKERS</text>
+
+  <!-- VAULT FIRST HIT (armoured marker) -->
+  <g transform="translate(80,335)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#1A1A2A" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="#8899AA" stroke-width="2.5"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" opacity="0.5"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#334455" opacity="0.35"/>
+    <!-- Armour shield shape -->
+    <path d="M 28,8 L 44,16 L 44,32 Q 44,44 28,50 Q 12,44 12,32 L 12,16 Z"
+          fill="none" stroke="#8899AA" stroke-width="1.5" opacity="0.7"/>
+    <!-- Strike mark (first hit) -->
+    <line x1="18" y1="18" x2="38" y2="38" stroke="#E94560" stroke-width="2" opacity="0.8" filter="url(#redGlow)"/>
+    <!-- Dot count: 1 of 2 filled -->
+    <circle cx="22" cy="48" r="3" fill="#E94560" opacity="0.9"/>
+    <circle cx="34" cy="48" r="3" fill="#334455" stroke="#8899AA" stroke-width="1" opacity="0.7"/>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#8899AA" stroke-width="1" opacity="0.3"/>
+    <rect x="0" y="47" width="56" height="9" fill="#0A0800" opacity="0.2" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold"
+          text-anchor="middle" fill="#8899AA" letter-spacing="1">VAULT HIT 1</text>
+  </g>
+  <text x="108" y="413" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#8899AA" opacity="0.7">armoured</text>
+
+  <!-- BONUS DRAW (teal flash — uncommon 2nd cell) -->
+  <g transform="translate(260,335)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#001A22" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#001A22"/>
+    <!-- Teal flash burst -->
+    <circle cx="28" cy="28" r="22" fill="#00FFEE" opacity="0.1"/>
+    <circle cx="28" cy="28" r="15" fill="#00FFEE" opacity="0.15" filter="url(#tealGlow)"/>
+    <!-- + symbol -->
+    <text x="28" y="36" font-family="Georgia,serif" font-size="28" font-weight="bold"
+          text-anchor="middle" fill="#00FFEE" opacity="0.9" filter="url(#tealGlow)">+</text>
+    <!-- "FREE" badge -->
+    <rect x="12" y="6" width="32" height="12" rx="3" fill="#006688" opacity="0.8"/>
+    <text x="28" y="16" font-family="'Courier New',monospace" font-size="8" font-weight="bold"
+          text-anchor="middle" fill="#00FFEE">FREE</text>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.3" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="5" font-weight="bold"
+          text-anchor="middle" fill="#00D4FF" letter-spacing="1">BONUS DRAW</text>
+  </g>
+  <text x="288" y="413" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#00D4FF" opacity="0.7">extra shot</text>
+
+  <!-- CHARGED TRIGGER (last in row/col — lightning) -->
+  <g transform="translate(440,335)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#1A1000" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderGold)" stroke-width="3" filter="url(#goldGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#1A1200"/>
+    <!-- Large flash -->
+    <circle cx="28" cy="28" r="22" fill="#FFD700" opacity="0.12"/>
+    <!-- Mega bolt -->
+    <polygon points="30,4  20,26  27,26  18,52  38,22  31,22"
+             fill="#FFE066" opacity="0.95" filter="url(#goldGlow)"/>
+    <!-- "FREE" badge -->
+    <rect x="12" y="6" width="32" height="12" rx="3" fill="#6B4000" opacity="0.85"/>
+    <text x="28" y="16" font-family="'Courier New',monospace" font-size="8" font-weight="bold"
+          text-anchor="middle" fill="#FFD700">FREE</text>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+    <rect x="0" y="47" width="56" height="9" fill="#1A1000" opacity="0.3" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="4.5" font-weight="bold"
+          text-anchor="middle" fill="#F5C842" letter-spacing="1">CHARGED TRIGGER</text>
+  </g>
+  <text x="468" y="413" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#F5A623" opacity="0.7">row cleared</text>
+
+  <!-- POISON TRIGGERED (attacker discard) -->
+  <g transform="translate(620,335)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#0A1500" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderGreen)" stroke-width="3" filter="url(#greenGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#0D1A0D"/>
+    <!-- Poison splat -->
+    <circle cx="28" cy="24" r="14" fill="#2DC653" opacity="0.15" filter="url(#greenGlow)"/>
+    <!-- Skull trigger -->
+    <circle cx="28" cy="22" r="9" fill="none" stroke="#2DC653" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="24" cy="20" r="2.5" fill="#2DC653" opacity="0.9"/>
+    <circle cx="32" cy="20" r="2.5" fill="#2DC653" opacity="0.9"/>
+    <!-- Discard indicator -->
+    <text x="28" y="46" font-family="Georgia,serif" font-size="16" font-weight="bold"
+          text-anchor="middle" fill="#E94560" filter="url(#redGlow)">-1</text>
+    <rect x="12" y="6" width="32" height="12" rx="3" fill="#220A00" opacity="0.85"/>
+    <text x="28" y="16" font-family="'Courier New',monospace" font-size="8" font-weight="bold"
+          text-anchor="middle" fill="#E94560">DISCARD</text>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#2DC653" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="47" width="56" height="9" fill="#000D00" opacity="0.4" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="4.5" font-weight="bold"
+          text-anchor="middle" fill="#2DC653" letter-spacing="1">POISON TRIGGER</text>
+  </g>
+  <text x="648" y="413" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#2DC653" opacity="0.7">letter lost</text>
+
+  <!-- MIRROR TRIGGERED (copy harvested) -->
+  <g transform="translate(800,335)" filter="url(#tileDrop)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBase)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9"
+          fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)"/>
+    <rect x="0" y="0" width="56" height="16" rx="7" fill="url(#bevelV)" clip-path="url(#tc)" opacity="0.5"/>
+    <!-- Mirror reflection effect -->
+    <text x="16" y="40" font-family="Georgia,serif" font-size="24" font-weight="bold"
+          text-anchor="middle" fill="#1C0E00" opacity="0.7">R</text>
+    <g transform="translate(56,0) scale(-1,1)">
+      <text x="16" y="40" font-family="Georgia,serif" font-size="24" font-weight="bold"
+            text-anchor="middle" fill="#00B4D8" opacity="0.6">R</text>
+    </g>
+    <!-- Axis + copy arrow -->
+    <line x1="28" y1="8" x2="28" y2="42" stroke="#00D4FF" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.7"/>
+    <!-- "COPY" badge -->
+    <rect x="10" y="6" width="36" height="12" rx="3" fill="#003344" opacity="0.85"/>
+    <text x="28" y="16" font-family="'Courier New',monospace" font-size="8" font-weight="bold"
+          text-anchor="middle" fill="#00FFEE">COPIED</text>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.4"/>
+    <rect x="0" y="47" width="56" height="9" fill="#001820" opacity="0.25" clip-path="url(#tc)"/>
+    <text x="28" y="54" font-family="'Courier New',monospace" font-size="4.5" font-weight="bold"
+          text-anchor="middle" fill="#00A0C0" letter-spacing="1">MIRROR TRIGGER</text>
+  </g>
+  <text x="828" y="413" font-family="Georgia,serif" font-size="9" text-anchor="middle" fill="#00B4D8" opacity="0.7">tile stays on grid</text>
+
+  <!-- ═══════════════════════════════════════════════
+       IN-GRID REFERENCE STRIP
+  ═══════════════════════════════════════════════ -->
+  <line x1="60" y1="430" x2="1140" y2="430" stroke="#2A1A08" stroke-width="1" opacity="0.3"/>
+  <text x="600" y="446" font-family="Georgia,serif" font-size="10"
+        text-anchor="middle" fill="#6B4F1A" letter-spacing="3" opacity="0.5">ALL MARKERS IN 70×70 CELL REFERENCE  ·  7px MARGIN</text>
+
+  <!-- Ghost cells for all 9 state markers at y=455 -->
+  <g fill="none" stroke="#C8922A" stroke-width="0.8" opacity="0.15" stroke-dasharray="3,3">
+    <rect x="40"  y="455" width="70" height="70" rx="2"/>
+    <rect x="155" y="455" width="70" height="70" rx="2"/>
+    <rect x="270" y="455" width="70" height="70" rx="2"/>
+    <rect x="385" y="455" width="70" height="70" rx="2"/>
+    <rect x="500" y="455" width="70" height="70" rx="2"/>
+    <rect x="615" y="455" width="70" height="70" rx="2"/>
+    <rect x="730" y="455" width="70" height="70" rx="2"/>
+    <rect x="845" y="455" width="70" height="70" rx="2"/>
+    <rect x="960" y="455" width="70" height="70" rx="2"/>
+  </g>
+
+  <!-- Wildcard in cell -->
+  <g transform="translate(47,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#purpleBase)" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderPurple)" stroke-width="3" filter="url(#purpleGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#purpleFace)"/>
+    <rect x="4" y="4" width="48" height="48" rx="4" fill="none" stroke="#C060FF" stroke-width="0.8" opacity="0.4"/>
+    <text x="28" y="38" font-family="Georgia,serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#FFFFFF" filter="url(#purpleGlow)">★</text>
+    <rect x="38" y="40" width="14" height="12" rx="2.5" fill="#0D0020" opacity="0.9"/>
+    <text x="45" y="50" font-family="Georgia,serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#E0AAFF">∞</text>
+    <circle cx="8" cy="8" r="4" fill="#4A0E8F" opacity="0.95"/><circle cx="8" cy="8" r="2.5" fill="#C060FF" opacity="0.9"/>
+  </g>
+  <!-- Your tile in cell -->
+  <g transform="translate(162,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="url(#tileBase)" opacity="0.6"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="#3A5A3A" stroke-width="2" opacity="0.5"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" opacity="0.4"/>
+    <text x="28" y="38" font-family="Georgia,serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#1C0E00" opacity="0.25">?</text>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#2A4A2A" stroke-width="1" opacity="0.4"/>
+  </g>
+  <!-- Your hit in cell -->
+  <g transform="translate(277,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#1A0000" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderRed)" stroke-width="3" filter="url(#redGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#1A0000"/>
+    <circle cx="28" cy="28" r="24" fill="url(#yourHitBurst)" opacity="0.6"/>
+    <line x1="14" y1="14" x2="42" y2="42" stroke="#FF4444" stroke-width="3" opacity="0.85" filter="url(#redGlow)"/>
+    <line x1="42" y1="14" x2="14" y2="42" stroke="#FF4444" stroke-width="3" opacity="0.85" filter="url(#redGlow)"/>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#FF4444" stroke-width="1" opacity="0.4"/>
+  </g>
+  <!-- Their miss in cell -->
+  <g transform="translate(392,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#0A0E14" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="#334455" stroke-width="2.5" opacity="0.7"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#0D1520"/>
+    <circle cx="28" cy="28" r="7" fill="none" stroke="#556677" stroke-width="2" opacity="0.8"/>
+    <circle cx="28" cy="28" r="3" fill="#556677" opacity="0.6"/>
+    <circle cx="28" cy="28" r="14" fill="none" stroke="#334455" stroke-width="1" opacity="0.4"/>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#334455" stroke-width="1" opacity="0.3"/>
+  </g>
+  <!-- Unknown enemy cell -->
+  <g transform="translate(507,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#070E18" opacity="0.9"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="#1A2A3A" stroke-width="2.5" opacity="0.8"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#0A1220"/>
+    <circle cx="28" cy="28" r="16" fill="none" stroke="#2A3A4A" stroke-width="1" opacity="0.5" stroke-dasharray="3,3"/>
+    <line x1="28" y1="16" x2="28" y2="20" stroke="#2A3A4A" stroke-width="1" opacity="0.5"/>
+    <line x1="28" y1="36" x2="28" y2="40" stroke="#2A3A4A" stroke-width="1" opacity="0.5"/>
+    <line x1="16" y1="28" x2="20" y2="28" stroke="#2A3A4A" stroke-width="1" opacity="0.5"/>
+    <line x1="36" y1="28" x2="40" y2="28" stroke="#2A3A4A" stroke-width="1" opacity="0.5"/>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#1A2A3A" stroke-width="1" opacity="0.4"/>
+  </g>
+  <!-- Enemy hit in cell -->
+  <g transform="translate(622,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#1A0E00" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderGold)" stroke-width="3" filter="url(#goldGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#1A1000"/>
+    <circle cx="28" cy="28" r="22" fill="url(#hitBurst)" opacity="0.7"/>
+    <polygon points="28,6  24,20 32,20"  fill="#FFD700" opacity="0.8" filter="url(#goldGlow)"/>
+    <polygon points="50,28 36,24 36,32"  fill="#FFD700" opacity="0.7"/>
+    <polygon points="28,50 24,36 32,36"  fill="#FFD700" opacity="0.8"/>
+    <polygon points="6,28  20,24 20,32"  fill="#FFD700" opacity="0.7"/>
+    <circle cx="28" cy="28" r="6" fill="#FFD700" opacity="0.9" filter="url(#goldGlow)"/>
+    <circle cx="28" cy="28" r="3" fill="#FFFFFF"/>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+  </g>
+  <!-- Enemy miss in cell -->
+  <g transform="translate(737,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#070E18" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="#2A3A4A" stroke-width="2.5" opacity="0.6"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#0A1220"/>
+    <circle cx="28" cy="28" r="5" fill="#445566" opacity="0.8"/>
+    <circle cx="28" cy="28" r="11" fill="none" stroke="#334455" stroke-width="1.2" opacity="0.6"/>
+    <circle cx="28" cy="28" r="18" fill="none" stroke="#223344" stroke-width="0.8" opacity="0.35"/>
+    <line x1="22" y1="22" x2="34" y2="34" stroke="#445566" stroke-width="1.5" opacity="0.5"/>
+    <line x1="34" y1="22" x2="22" y2="34" stroke="#445566" stroke-width="1.5" opacity="0.5"/>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#2A3A4A" stroke-width="1" opacity="0.3"/>
+  </g>
+  <!-- Vault hit 1 in cell -->
+  <g transform="translate(852,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#1A1A2A" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="#8899AA" stroke-width="2.5"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="url(#ivoryFace)" opacity="0.5"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#334455" opacity="0.35"/>
+    <path d="M 28,8 L 44,16 L 44,32 Q 44,44 28,50 Q 12,44 12,32 L 12,16 Z"
+          fill="none" stroke="#8899AA" stroke-width="1.5" opacity="0.7"/>
+    <line x1="18" y1="18" x2="38" y2="38" stroke="#E94560" stroke-width="2" opacity="0.8" filter="url(#redGlow)"/>
+    <circle cx="22" cy="50" r="3" fill="#E94560" opacity="0.9"/>
+    <circle cx="34" cy="50" r="3" fill="#334455" stroke="#8899AA" stroke-width="1" opacity="0.7"/>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#8899AA" stroke-width="1" opacity="0.3"/>
+  </g>
+  <!-- Bonus draw in cell -->
+  <g transform="translate(967,462)">
+    <rect x="3" y="4" width="56" height="56" rx="7" fill="#001A22" opacity="0.85"/>
+    <rect x="-2" y="-2" width="60" height="60" rx="9" fill="none" stroke="url(#borderTeal)" stroke-width="3" filter="url(#tealGlow)"/>
+    <rect x="0" y="0" width="56" height="56" rx="7" fill="#001A22"/>
+    <circle cx="28" cy="28" r="22" fill="#00FFEE" opacity="0.1"/>
+    <text x="28" y="36" font-family="Georgia,serif" font-size="28" font-weight="bold"
+          text-anchor="middle" fill="#00FFEE" opacity="0.9" filter="url(#tealGlow)">+</text>
+    <rect x="12" y="6" width="32" height="12" rx="3" fill="#006688" opacity="0.8"/>
+    <text x="28" y="16" font-family="'Courier New',monospace" font-size="8" font-weight="bold" text-anchor="middle" fill="#00FFEE">FREE</text>
+    <rect x="1" y="1" width="54" height="54" rx="6" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="544" x2="1140" y2="544" stroke="#2A1A08" stroke-width="1" opacity="0.3"/>
+  <text x="600" y="562" font-family="'Courier New',monospace" font-size="10"
+        text-anchor="middle" fill="#4A3A18" letter-spacing="3" opacity="0.5">
+    SHEET 3  ·  56×56px  ·  WILDCARD + 4 SPECIALS + 8 STATE MARKERS  ·  TOTAL TILE SET COMPLETE
+  </text>
+
+</svg>

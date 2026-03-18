@@ -1,0 +1,536 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+<!--
+  ============================================================
+  LEXICON — WORD BOMB SERIES
+  Asset: STORM (Tier IV)
+  Colour: Purple / Violet  (#9B40E0, #C084FC)
+  Effect: 2×2 area detonation — 4 cells hit simultaneously
+  Target: E4–F5 (cols E-F, rows 4-5)
+  Standalone asset: 136×112px (2 cells wide × 2 cells tall)
+  Reposition x/y to any 2×2 block on the grid
+  Board grid: 68px wide × 56px tall per cell
+  Origin: x=155 y=120
+
+  DESIGN NOTES:
+  — Tier I  SPARK:     Gold  (#FFD700) — horizontal row scan
+  — Tier II BLAST:     Red   (#FF4400) — single cell precision strike
+  — Tier III SURGE:    Teal  (#00FFEE) — full column reveal
+  — Tier IV STORM:     Purple (#9B40E0) — 2×2 area detonation  ← THIS FILE
+  — Tier V  TEMPEST:   TBD   — letter steal vortex
+  — Tier VI OBLITERATE:TBD   — full row/column annihilation
+
+  VISUAL ESCALATION RULE:
+  Each tier gets a distinct hue, wider blast radius, more debris.
+  Storm introduces multi-cell simultaneous destruction —
+  all 4 cells detonate at once from a central nexus point.
+  Arc tendrils now radiate outward from the 2×2 perimeter
+  rather than a single cell centre.
+
+  STANDALONE ASSET USAGE:
+  Drop the effect group (tagged below) over any 2×2 block.
+  Centre the nexus at the intersection of the 4 target cells.
+  All cells outside the 2×2 remain unaffected.
+  ============================================================
+-->
+  <defs>
+    <linearGradient id="pageBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#080D13"/>
+    </linearGradient>
+    <linearGradient id="boardSurf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#141E2C"/>
+      <stop offset="100%" style="stop-color:#0A1018"/>
+    </linearGradient>
+    <linearGradient id="ironGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A4A5A"/>
+      <stop offset="100%" style="stop-color:#1A1A25"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#100818"/>
+      <stop offset="100%" style="stop-color:#070410"/>
+    </linearGradient>
+    <linearGradient id="ivoryFace" x1="10%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%"   style="stop-color:#F7EDD0"/>
+      <stop offset="40%"  style="stop-color:#EDD9A3"/>
+      <stop offset="100%" style="stop-color:#B8963A"/>
+    </linearGradient>
+    <linearGradient id="tileBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A3000"/>
+      <stop offset="100%" style="stop-color:#1A1000"/>
+    </linearGradient>
+
+    <!-- Storm purple core -->
+    <radialGradient id="stormCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   style="stop-color:#FFFFFF"/>
+      <stop offset="15%"  style="stop-color:#EEB8FF"/>
+      <stop offset="40%"  style="stop-color:#9B40E0"/>
+      <stop offset="72%"  style="stop-color:#5A0AAA;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#2A0055;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Per-cell purple destruction wash -->
+    <radialGradient id="cellStorm" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   style="stop-color:#C084FC;stop-opacity:0.55"/>
+      <stop offset="55%"  style="stop-color:#7B2FBE;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#3A0088;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Shockwave ring -->
+    <radialGradient id="stormRing" cx="50%" cy="50%" r="50%">
+      <stop offset="68%"  style="stop-color:#7B2FBE;stop-opacity:0"/>
+      <stop offset="84%"  style="stop-color:#C084FC;stop-opacity:0.5"/>
+      <stop offset="95%"  style="stop-color:#EEB8FF;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0.3"/>
+    </radialGradient>
+
+    <!-- Shard fill -->
+    <linearGradient id="shardPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#EEB8FF"/>
+      <stop offset="100%" style="stop-color:#7B2FBE"/>
+    </linearGradient>
+
+    <!-- FILTERS -->
+    <filter id="stormFx" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="16" result="b1"/>
+      <feFlood flood-color="#9B40E0" flood-opacity="1"   result="c1"/>
+      <feComposite in="c1" in2="b1" operator="in" result="g1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="36" result="b2"/>
+      <feFlood flood-color="#5A0AAA" flood-opacity="0.6" result="c2"/>
+      <feComposite in="c2" in2="b2" operator="in" result="g2"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="65" result="b3"/>
+      <feFlood flood-color="#2A0055" flood-opacity="0.35" result="c3"/>
+      <feComposite in="c3" in2="b3" operator="in" result="g3"/>
+      <feMerge>
+        <feMergeNode in="g3"/>
+        <feMergeNode in="g2"/>
+        <feMergeNode in="g1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="arcFx" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#C084FC" flood-opacity="0.8" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="purpleLabelGlow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#C084FC" flood-opacity="0.9" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="goldLabelGlow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#FFD700" flood-opacity="0.6" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="smokeBlur">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+
+    <filter id="boardShadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+
+    <filter id="tileShadow">
+      <feDropShadow dx="3" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <pattern id="grain" x="0" y="0" width="1200" height="22" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="11" x2="1200" y2="11" stroke="#FFFFFF" stroke-width="0.4" opacity="0.02"/>
+    </pattern>
+  </defs>
+
+  <!-- PAGE -->
+  <rect width="1200" height="800" fill="url(#pageBg)"/>
+  <rect width="1200" height="800" fill="url(#grain)"/>
+  <text x="600" y="38" font-family="Georgia, serif" font-size="12"
+        text-anchor="middle" fill="#3A1A6A" letter-spacing="6" opacity="0.9">LEXICON  —  WORD BOMB  —  TIER IV</text>
+  <line x1="180" y1="48" x2="1020" y2="48" stroke="#2A1050" stroke-width="1" opacity="0.6"/>
+
+  <!-- BOARD -->
+  <rect x="80" y="65" width="760" height="680" rx="8"
+        fill="url(#boardSurf)" filter="url(#boardShadow)"/>
+  <rect x="80" y="65" width="760" height="680" rx="8" fill="url(#grain)" opacity="0.5"/>
+  <rect x="80" y="65" width="760" height="680" rx="8"
+        fill="none" stroke="#2A3A50" stroke-width="2"/>
+
+  <!-- Runes -->
+  <g fill="#3A2A5A" font-family="serif" font-size="11" opacity="0.45">
+    <text x="98"  y="88">ᚠ</text><text x="114" y="88">ᚢ</text><text x="130" y="88">ᚦ</text>
+    <text x="146" y="88">ᚨ</text><text x="162" y="88">ᚱ</text><text x="190" y="88">ᚷ</text>
+    <text x="640" y="88">ᛁ</text><text x="656" y="88">ᛃ</text><text x="688" y="88">ᛈ</text>
+    <text x="710" y="88">ᛊ</text><text x="736" y="88">ᛏ</text><text x="768" y="88">ᛖ</text>
+    <text x="800" y="88">ᛚ</text><text x="820" y="88">ᛞ</text>
+  </g>
+
+  <!-- GRID bg
+       68×56px cells, origin x=155 y=120
+       Col centres A-J: 189,257,325,393,461,529,597,665,733,801
+       Row centres 1-10: 148,204,260,316,372,428,484,540,596,652
+       TARGET: E4(461,316) F4(529,316) E5(461,372) F5(529,372)
+       2×2 block: x=427–563, y=288–400
+       Nexus centre: 495, 344
+  -->
+  <rect x="155" y="120" width="680" height="560" fill="#070E18" opacity="0.95"/>
+
+  <!-- 2×2 target cells purple wash -->
+  <rect x="427" y="288" width="68" height="56" fill="url(#cellStorm)"/>
+  <rect x="495" y="288" width="68" height="56" fill="url(#cellStorm)"/>
+  <rect x="427" y="344" width="68" height="56" fill="url(#cellStorm)"/>
+  <rect x="495" y="344" width="68" height="56" fill="url(#cellStorm)"/>
+
+  <!-- Combined 2×2 deep glow -->
+  <rect x="427" y="288" width="136" height="112"
+        fill="#9B40E0" opacity="0.08" filter="url(#stormFx)"/>
+
+  <!-- Grid lines glow -->
+  <g stroke="#C8922A" stroke-width="2" opacity="0.18">
+    <line x1="155" y1="120" x2="155" y2="680"/><line x1="223" y1="120" x2="223" y2="680"/>
+    <line x1="291" y1="120" x2="291" y2="680"/><line x1="359" y1="120" x2="359" y2="680"/>
+    <line x1="427" y1="120" x2="427" y2="680"/><line x1="495" y1="120" x2="495" y2="680"/>
+    <line x1="563" y1="120" x2="563" y2="680"/><line x1="631" y1="120" x2="631" y2="680"/>
+    <line x1="699" y1="120" x2="699" y2="680"/><line x1="767" y1="120" x2="767" y2="680"/>
+    <line x1="835" y1="120" x2="835" y2="680"/>
+    <line x1="155" y1="120" x2="835" y2="120"/><line x1="155" y1="176" x2="835" y2="176"/>
+    <line x1="155" y1="232" x2="835" y2="232"/><line x1="155" y1="288" x2="835" y2="288"/>
+    <line x1="155" y1="344" x2="835" y2="344"/><line x1="155" y1="400" x2="835" y2="400"/>
+    <line x1="155" y1="456" x2="835" y2="456"/><line x1="155" y1="512" x2="835" y2="512"/>
+    <line x1="155" y1="568" x2="835" y2="568"/><line x1="155" y1="624" x2="835" y2="624"/>
+    <line x1="155" y1="680" x2="835" y2="680"/>
+  </g>
+  <!-- Grid lines sharp -->
+  <g stroke="#D4A030" stroke-width="0.8" opacity="0.8">
+    <line x1="155" y1="120" x2="155" y2="680"/><line x1="223" y1="120" x2="223" y2="680"/>
+    <line x1="291" y1="120" x2="291" y2="680"/><line x1="359" y1="120" x2="359" y2="680"/>
+    <line x1="427" y1="120" x2="427" y2="680"/><line x1="495" y1="120" x2="495" y2="680"/>
+    <line x1="563" y1="120" x2="563" y2="680"/><line x1="631" y1="120" x2="631" y2="680"/>
+    <line x1="699" y1="120" x2="699" y2="680"/><line x1="767" y1="120" x2="767" y2="680"/>
+    <line x1="835" y1="120" x2="835" y2="680"/>
+    <line x1="155" y1="120" x2="835" y2="120"/><line x1="155" y1="176" x2="835" y2="176"/>
+    <line x1="155" y1="232" x2="835" y2="232"/><line x1="155" y1="288" x2="835" y2="288"/>
+    <line x1="155" y1="344" x2="835" y2="344"/><line x1="155" y1="400" x2="835" y2="400"/>
+    <line x1="155" y1="456" x2="835" y2="456"/><line x1="155" y1="512" x2="835" y2="512"/>
+    <line x1="155" y1="568" x2="835" y2="568"/><line x1="155" y1="624" x2="835" y2="624"/>
+    <line x1="155" y1="680" x2="835" y2="680"/>
+  </g>
+
+  <!-- 2×2 border — purple electric -->
+  <rect x="427" y="288" width="136" height="112"
+        fill="none" stroke="#C084FC" stroke-width="2.5"
+        filter="url(#arcFx)" opacity="0.9"/>
+
+  <!-- ══ STORM EFFECT — centred on nexus 495,344 ══
+       Nexus = intersection of E/F cols and 4/5 rows
+  ══ -->
+
+  <!-- Smoke undercloud -->
+  <ellipse cx="495" cy="344" rx="90" ry="65"
+           fill="#1A0033" opacity="0.55" filter="url(#smokeBlur)"/>
+
+  <!-- Shockwave rings — larger than Blast, asymmetric (area bomb) -->
+  <circle cx="495" cy="344" r="52"  fill="url(#stormRing)" opacity="0.55"/>
+  <circle cx="495" cy="344" r="80"  fill="none" stroke="#9B40E0" stroke-width="2.5"
+          opacity="0.4" filter="url(#arcFx)"/>
+  <circle cx="495" cy="344" r="112" fill="none" stroke="#5A0AAA" stroke-width="1.5"
+          opacity="0.25" filter="url(#arcFx)"/>
+  <circle cx="495" cy="344" r="150" fill="none" stroke="#2A0055" stroke-width="1"
+          opacity="0.12"/>
+  <circle cx="495" cy="344" r="196" fill="none" stroke="#1A0033" stroke-width="0.8"
+          opacity="0.06"/>
+
+  <!-- Arc tendrils radiating from all 4 cell corners + midpoints -->
+  <!-- Top-left corner arcs (427,288) -->
+  <path d="M 427,288 L 408,270 L 400,258" stroke="#EEB8FF" stroke-width="1.2" fill="none" opacity="0.6" filter="url(#arcFx)"/>
+  <path d="M 427,288 Q 402,278 380,285" stroke="#C084FC" stroke-width="1" fill="none" opacity="0.45" filter="url(#arcFx)"/>
+  <!-- Top-right corner (563,288) -->
+  <path d="M 563,288 L 582,270 L 590,258" stroke="#EEB8FF" stroke-width="1.2" fill="none" opacity="0.6" filter="url(#arcFx)"/>
+  <path d="M 563,288 Q 588,278 610,285" stroke="#C084FC" stroke-width="1" fill="none" opacity="0.45" filter="url(#arcFx)"/>
+  <!-- Bottom-left corner (427,400) -->
+  <path d="M 427,400 L 408,418 L 400,430" stroke="#EEB8FF" stroke-width="1.2" fill="none" opacity="0.6" filter="url(#arcFx)"/>
+  <path d="M 427,400 Q 402,410 380,403" stroke="#C084FC" stroke-width="1" fill="none" opacity="0.45" filter="url(#arcFx)"/>
+  <!-- Bottom-right corner (563,400) -->
+  <path d="M 563,400 L 582,418 L 590,430" stroke="#EEB8FF" stroke-width="1.2" fill="none" opacity="0.6" filter="url(#arcFx)"/>
+  <path d="M 563,400 Q 588,410 610,403" stroke="#C084FC" stroke-width="1" fill="none" opacity="0.45" filter="url(#arcFx)"/>
+
+  <!-- Top edge mid-arcs -->
+  <path d="M 495,288 Q 490,268 495,252 Q 498,240 490,228" stroke="#C084FC" stroke-width="1.4" fill="none" opacity="0.55" filter="url(#arcFx)"/>
+  <path d="M 478,288 L 468,266 L 476,254" stroke="#EEB8FF" stroke-width="1" fill="none" opacity="0.45" filter="url(#arcFx)"/>
+  <path d="M 512,288 L 522,266 L 514,254" stroke="#EEB8FF" stroke-width="1" fill="none" opacity="0.45" filter="url(#arcFx)"/>
+  <!-- Bottom edge -->
+  <path d="M 495,400 Q 490,420 495,436 Q 498,448 490,460" stroke="#C084FC" stroke-width="1.4" fill="none" opacity="0.55" filter="url(#arcFx)"/>
+  <path d="M 478,400 L 468,422 L 476,434" stroke="#EEB8FF" stroke-width="1" fill="none" opacity="0.45" filter="url(#arcFx)"/>
+  <path d="M 512,400 L 522,422 L 514,434" stroke="#EEB8FF" stroke-width="1" fill="none" opacity="0.45" filter="url(#arcFx)"/>
+  <!-- Left edge -->
+  <path d="M 427,344 Q 407,340 390,344 Q 376,348 358,344" stroke="#C084FC" stroke-width="1.4" fill="none" opacity="0.5" filter="url(#arcFx)"/>
+  <!-- Right edge -->
+  <path d="M 563,344 Q 583,340 600,344 Q 616,348 634,344" stroke="#C084FC" stroke-width="1.4" fill="none" opacity="0.5" filter="url(#arcFx)"/>
+
+  <!-- Debris shards — from all 4 cell centres simultaneously -->
+  <!-- E4 centre 461,316 -->
+  <polygon points="461,300 455,284 463,280 468,296" fill="url(#shardPurple)" opacity="0.75" filter="url(#arcFx)"/>
+  <polygon points="445,316 429,310 427,318 443,324" fill="url(#shardPurple)" opacity="0.7" filter="url(#arcFx)"/>
+  <polygon points="448,304 436,290 442,284 454,298" fill="#EEB8FF" opacity="0.55" filter="url(#arcFx)"/>
+  <!-- F4 centre 529,316 -->
+  <polygon points="529,300 523,284 531,280 536,296" fill="url(#shardPurple)" opacity="0.75" filter="url(#arcFx)"/>
+  <polygon points="545,316 561,310 563,318 547,324" fill="url(#shardPurple)" opacity="0.7" filter="url(#arcFx)"/>
+  <polygon points="542,304 554,290 548,284 536,298" fill="#EEB8FF" opacity="0.55" filter="url(#arcFx)"/>
+  <!-- E5 centre 461,372 -->
+  <polygon points="461,388 455,404 463,408 468,392" fill="url(#shardPurple)" opacity="0.75" filter="url(#arcFx)"/>
+  <polygon points="445,372 429,366 427,374 443,380" fill="url(#shardPurple)" opacity="0.65" filter="url(#arcFx)"/>
+  <polygon points="448,384 436,398 442,404 454,390" fill="#EEB8FF" opacity="0.5" filter="url(#arcFx)"/>
+  <!-- F5 centre 529,372 -->
+  <polygon points="529,388 523,404 531,408 536,392" fill="url(#shardPurple)" opacity="0.75" filter="url(#arcFx)"/>
+  <polygon points="545,372 561,366 563,374 547,380" fill="url(#shardPurple)" opacity="0.65" filter="url(#arcFx)"/>
+  <polygon points="542,384 554,398 548,404 536,390" fill="#EEB8FF" opacity="0.5" filter="url(#arcFx)"/>
+
+  <!-- Far particle specks -->
+  <g fill="#C084FC" opacity="0.5" filter="url(#arcFx)">
+    <circle cx="461" cy="264" r="2.5"/><circle cx="529" cy="264" r="2.5"/>
+    <circle cx="406" cy="290" r="2"/><circle cx="584" cy="290" r="2"/>
+    <circle cx="398" cy="344" r="2.5"/><circle cx="592" cy="344" r="2.5"/>
+    <circle cx="406" cy="398" r="2"/><circle cx="584" cy="398" r="2"/>
+    <circle cx="461" cy="424" r="2.5"/><circle cx="529" cy="424" r="2.5"/>
+    <circle cx="432" cy="270" r="2"/><circle cx="558" cy="270" r="2"/>
+    <circle cx="432" cy="418" r="2"/><circle cx="558" cy="418" r="2"/>
+  </g>
+
+  <!-- ══ NEXUS CORE at 495,344 (intersection of all 4 cells) ══ -->
+  <circle cx="495" cy="344" r="40" fill="url(#stormCore)" opacity="0.6" filter="url(#stormFx)"/>
+  <circle cx="495" cy="344" r="24" fill="url(#stormCore)" opacity="0.85" filter="url(#stormFx)"/>
+  <circle cx="495" cy="344" r="10" fill="#FFFFFF" opacity="1" filter="url(#stormFx)"/>
+  <circle cx="495" cy="344" r="4"  fill="#FFFFFF"/>
+
+  <!-- Cross spark at nexus -->
+  <line x1="495" y1="318" x2="495" y2="334" stroke="#FFFFFF" stroke-width="3" opacity="0.9"/>
+  <line x1="495" y1="354" x2="495" y2="370" stroke="#FFFFFF" stroke-width="3" opacity="0.9"/>
+  <line x1="469" y1="344" x2="485" y2="344" stroke="#FFFFFF" stroke-width="3" opacity="0.9"/>
+  <line x1="505" y1="344" x2="521" y2="344" stroke="#FFFFFF" stroke-width="3" opacity="0.9"/>
+  <!-- Diagonal spokes — storm has 8-point cross vs blast 4-point -->
+  <line x1="476" y1="325" x2="486" y2="335" stroke="#EEB8FF" stroke-width="1.8" opacity="0.7"/>
+  <line x1="514" y1="325" x2="504" y2="335" stroke="#EEB8FF" stroke-width="1.8" opacity="0.7"/>
+  <line x1="476" y1="363" x2="486" y2="353" stroke="#EEB8FF" stroke-width="1.8" opacity="0.7"/>
+  <line x1="514" y1="363" x2="504" y2="353" stroke="#EEB8FF" stroke-width="1.8" opacity="0.7"/>
+
+  <!-- Column labels -->
+  <g font-family="Georgia, serif" font-size="15" font-weight="bold"
+     text-anchor="middle" fill="#F5C842" filter="url(#goldLabelGlow)">
+    <text x="189" y="112">A</text><text x="257" y="112">B</text><text x="325" y="112">C</text>
+    <text x="393" y="112">D</text>
+    <text x="461" y="112" fill="#C084FC" filter="url(#purpleLabelGlow)">E</text>
+    <text x="529" y="112" fill="#C084FC" filter="url(#purpleLabelGlow)">F</text>
+    <text x="597" y="112">G</text><text x="665" y="112">H</text>
+    <text x="733" y="112">I</text><text x="801" y="112">J</text>
+    <text x="189" y="700">A</text><text x="257" y="700">B</text><text x="325" y="700">C</text>
+    <text x="393" y="700">D</text>
+    <text x="461" y="700" fill="#C084FC" filter="url(#purpleLabelGlow)">E</text>
+    <text x="529" y="700" fill="#C084FC" filter="url(#purpleLabelGlow)">F</text>
+    <text x="597" y="700">G</text><text x="665" y="700">H</text>
+    <text x="733" y="700">I</text><text x="801" y="700">J</text>
+  </g>
+
+  <!-- Row labels -->
+  <g font-family="Georgia, serif" font-size="14" font-weight="bold"
+     text-anchor="middle" dominant-baseline="middle" fill="#F5C842" filter="url(#goldLabelGlow)">
+    <text x="140" y="148">1</text><text x="140" y="204">2</text><text x="140" y="260">3</text>
+    <text x="140" y="316" fill="#C084FC" filter="url(#purpleLabelGlow)">4</text>
+    <text x="140" y="372" fill="#C084FC" filter="url(#purpleLabelGlow)">5</text>
+    <text x="140" y="428">6</text><text x="140" y="484">7</text><text x="140" y="540">8</text>
+    <text x="140" y="596">9</text><text x="137" y="652">10</text>
+    <text x="850" y="148">1</text><text x="850" y="204">2</text><text x="850" y="260">3</text>
+    <text x="850" y="316" fill="#C084FC" filter="url(#purpleLabelGlow)">4</text>
+    <text x="850" y="372" fill="#C084FC" filter="url(#purpleLabelGlow)">5</text>
+    <text x="850" y="428">6</text><text x="850" y="484">7</text><text x="850" y="540">8</text>
+    <text x="850" y="596">9</text><text x="853" y="652">10</text>
+  </g>
+
+  <!-- Corner brackets -->
+  <g fill="url(#ironGrad)">
+    <rect x="80" y="65" width="44" height="9" rx="2"/><rect x="80" y="65" width="9" height="44" rx="2"/>
+    <rect x="796" y="65" width="44" height="9" rx="2"/><rect x="831" y="65" width="9" height="44" rx="2"/>
+    <rect x="80" y="736" width="44" height="9" rx="2"/><rect x="80" y="700" width="9" height="44" rx="2"/>
+    <rect x="796" y="736" width="44" height="9" rx="2"/><rect x="831" y="700" width="9" height="44" rx="2"/>
+  </g>
+  <g fill="#222230">
+    <circle cx="102" cy="84" r="3.5"/><circle cx="94" cy="92" r="2.5"/>
+    <circle cx="818" cy="84" r="3.5"/><circle cx="826" cy="92" r="2.5"/>
+    <circle cx="102" cy="726" r="3.5"/><circle cx="94" cy="718" r="2.5"/>
+    <circle cx="818" cy="726" r="3.5"/><circle cx="826" cy="718" r="2.5"/>
+  </g>
+
+  <!-- Watermark -->
+  <text x="495" y="420" font-family="Georgia, serif" font-size="120"
+        font-weight="bold" text-anchor="middle" dominant-baseline="middle"
+        fill="#7B2FBE" opacity="0.025" letter-spacing="4">STORM</text>
+
+  <!-- RIGHT PANEL -->
+  <rect x="880" y="65" width="290" height="680" rx="8"
+        fill="#0C0F18" opacity="0.95" filter="url(#boardShadow)"/>
+  <rect x="880" y="65" width="290" height="680" rx="8"
+        fill="none" stroke="#2A1050" stroke-width="1.5"/>
+
+  <!-- Bomb card -->
+  <rect x="900" y="85" width="250" height="165" rx="10" fill="url(#cardBg)"/>
+  <rect x="900" y="85" width="250" height="165" rx="10"
+        fill="none" stroke="#9B40E0" stroke-width="1.5" filter="url(#purpleLabelGlow)" opacity="0.6"/>
+
+  <!-- Tier badge -->
+  <rect x="900" y="85" width="64" height="165" rx="10" fill="#0E0618" opacity="0.9"/>
+  <rect x="936" y="85" width="28" height="165" fill="#0E0618" opacity="0.9"/>
+  <text x="932" y="154" font-family="Georgia, serif" font-size="10"
+        text-anchor="middle" fill="#5A2A8A" letter-spacing="2">TIER</text>
+  <text x="932" y="186" font-family="Georgia, serif" font-size="28"
+        font-weight="bold" text-anchor="middle" fill="#C084FC"
+        filter="url(#purpleLabelGlow)">IV</text>
+  <line x1="966" y1="93" x2="966" y2="242" stroke="#9B40E0" stroke-width="1" opacity="0.25"/>
+
+  <text x="1093" y="126" font-family="Georgia, serif" font-size="28"
+        font-weight="bold" text-anchor="middle" fill="#C084FC"
+        filter="url(#purpleLabelGlow)" letter-spacing="3">STORM</text>
+  <text x="1093" y="156" font-family="'Courier New', monospace" font-size="14"
+        text-anchor="middle" fill="#FFFFFF" letter-spacing="8" opacity="0.7">S T O N E S</text>
+
+  <line x1="970" y1="168" x2="1140" y2="168" stroke="#9B40E0" stroke-width="0.8" opacity="0.25"/>
+
+  <text x="1055" y="188" font-family="Georgia, serif" font-size="13"
+        text-anchor="middle" fill="#9B5AC8" opacity="0.9">Target Zone</text>
+  <text x="1055" y="214" font-family="Georgia, serif" font-size="22"
+        font-weight="bold" text-anchor="middle" fill="#FFFFFF"
+        filter="url(#purpleLabelGlow)" letter-spacing="3">E4 — F5</text>
+  <text x="1055" y="234" font-family="Calibri, sans-serif" font-size="11"
+        text-anchor="middle" fill="#6A3A9A" opacity="0.85">6 letters spent  •  2×2 simultaneous</text>
+
+  <!-- 4-cell hit grid preview -->
+  <line x1="900" y1="258" x2="1150" y2="258" stroke="#2A1050" stroke-width="1" opacity="0.6"/>
+  <text x="1025" y="275" font-family="Georgia, serif" font-size="11"
+        text-anchor="middle" fill="#5A2A8A" letter-spacing="3" opacity="0.9">CELLS DETONATED</text>
+
+  <!-- Mini 2×2 grid showing results -->
+  <!-- E4: tile M (common) -->
+  <g transform="translate(920, 288)" filter="url(#tileShadow)">
+    <rect x="3" y="3" width="50" height="44" rx="6" fill="url(#tileBase)" opacity="0.8"/>
+    <rect x="-1" y="-1" width="52" height="46" rx="7" fill="none" stroke="#9966CC" stroke-width="1.5"/>
+    <rect x="0" y="0" width="50" height="44" rx="6" fill="url(#ivoryFace)" opacity="0.5"/>
+    <rect x="0" y="0" width="50" height="44" rx="6" fill="#9B40E0" opacity="0.2"/>
+    <path d="M 10,5 L 25,30 L 40,5" stroke="#000" stroke-width="1.5" fill="none" opacity="0.4"/>
+    <path d="M 5,44 L 20,20 L 25,30 L 45,44" stroke="#000" stroke-width="1" fill="none" opacity="0.3"/>
+    <line x1="5" y1="5" x2="45" y2="40" stroke="#C084FC" stroke-width="1.5" opacity="0.4"/>
+    <line x1="45" y1="5" x2="5" y2="40" stroke="#C084FC" stroke-width="1.5" opacity="0.4"/>
+    <text x="25" y="33" font-family="Georgia, serif" font-size="26" font-weight="bold"
+          text-anchor="middle" fill="#1C0E00" opacity="0.5">M</text>
+    <text x="35" y="42" font-family="Georgia, serif" font-size="8" fill="#C8922A">3</text>
+    <text x="25" y="54" font-family="'Courier New', monospace" font-size="7"
+          text-anchor="middle" fill="#9966CC" letter-spacing="1">E4</text>
+  </g>
+
+  <!-- F4: EMPTY -->
+  <g transform="translate(988, 288)">
+    <rect x="0" y="0" width="50" height="44" rx="6"
+          fill="#0A0818" opacity="0.7" stroke="#3A1A6A" stroke-width="1"/>
+    <circle cx="25" cy="22" r="5" fill="#3A1A6A" opacity="0.6"/>
+    <text x="25" y="54" font-family="'Courier New', monospace" font-size="7"
+          text-anchor="middle" fill="#3A1A6A" letter-spacing="1">F4  empty</text>
+  </g>
+
+  <!-- E5: tile A (common) -->
+  <g transform="translate(920, 352)" filter="url(#tileShadow)">
+    <rect x="3" y="3" width="50" height="44" rx="6" fill="url(#tileBase)" opacity="0.8"/>
+    <rect x="-1" y="-1" width="52" height="46" rx="7" fill="none" stroke="#9966CC" stroke-width="1.5"/>
+    <rect x="0" y="0" width="50" height="44" rx="6" fill="url(#ivoryFace)" opacity="0.5"/>
+    <rect x="0" y="0" width="50" height="44" rx="6" fill="#9B40E0" opacity="0.2"/>
+    <path d="M 10,44 L 25,5 L 40,44" stroke="#000" stroke-width="1.5" fill="none" opacity="0.4"/>
+    <line x1="5" y1="5" x2="45" y2="40" stroke="#C084FC" stroke-width="1.5" opacity="0.4"/>
+    <line x1="45" y1="5" x2="5" y2="40" stroke="#C084FC" stroke-width="1.5" opacity="0.4"/>
+    <text x="25" y="33" font-family="Georgia, serif" font-size="26" font-weight="bold"
+          text-anchor="middle" fill="#1C0E00" opacity="0.5">A</text>
+    <text x="35" y="42" font-family="Georgia, serif" font-size="8" fill="#C8922A">1</text>
+    <text x="25" y="54" font-family="'Courier New', monospace" font-size="7"
+          text-anchor="middle" fill="#9966CC" letter-spacing="1">E5</text>
+  </g>
+
+  <!-- F5: tile Z (rare, gold border) -->
+  <g transform="translate(988, 352)" filter="url(#tileShadow)">
+    <rect x="3" y="3" width="50" height="44" rx="6" fill="url(#tileBase)" opacity="0.8"/>
+    <rect x="-1" y="-1" width="52" height="46" rx="7"
+          fill="none" stroke="#F5A623" stroke-width="2" filter="url(#purpleLabelGlow)" opacity="0.7"/>
+    <rect x="0" y="0" width="50" height="44" rx="6" fill="url(#ivoryFace)" opacity="0.5"/>
+    <rect x="0" y="0" width="50" height="44" rx="6" fill="#9B40E0" opacity="0.2"/>
+    <line x1="5" y1="5" x2="45" y2="40" stroke="#C084FC" stroke-width="1.5" opacity="0.4"/>
+    <line x1="45" y1="5" x2="5" y2="40" stroke="#C084FC" stroke-width="1.5" opacity="0.4"/>
+    <text x="25" y="33" font-family="Georgia, serif" font-size="26" font-weight="bold"
+          text-anchor="middle" fill="#1C0E00" opacity="0.5">Z</text>
+    <text x="35" y="42" font-family="Georgia, serif" font-size="8" fill="#F5A623">10</text>
+    <text x="25" y="54" font-family="'Courier New', monospace" font-size="7"
+          text-anchor="middle" fill="#F5A623" letter-spacing="1">F5 RARE</text>
+  </g>
+
+  <!-- Collected letters -->
+  <line x1="900" y1="430" x2="1150" y2="430" stroke="#2A1050" stroke-width="1" opacity="0.5"/>
+  <text x="1025" y="448" font-family="Georgia, serif" font-size="11"
+        text-anchor="middle" fill="#5A2A8A" letter-spacing="3" opacity="0.8">LETTERS COLLECTED</text>
+
+  <!-- Letter bank additions -->
+  <g transform="translate(918, 460)">
+    <!-- M -->
+    <rect x="0"   y="0" width="38" height="34" rx="6" fill="#1A0A28" opacity="0.9"/>
+    <rect x="0"   y="0" width="38" height="34" rx="6" fill="none" stroke="#9966CC" stroke-width="1.2"/>
+    <text x="19" y="24" font-family="Georgia, serif" font-size="20" font-weight="bold"
+          text-anchor="middle" fill="#EEB8FF" filter="url(#purpleLabelGlow)">M</text>
+    <!-- A -->
+    <rect x="48"  y="0" width="38" height="34" rx="6" fill="#1A0A28" opacity="0.9"/>
+    <rect x="48"  y="0" width="38" height="34" rx="6" fill="none" stroke="#9966CC" stroke-width="1.2"/>
+    <text x="67" y="24" font-family="Georgia, serif" font-size="20" font-weight="bold"
+          text-anchor="middle" fill="#EEB8FF" filter="url(#purpleLabelGlow)">A</text>
+    <!-- Z rare -->
+    <rect x="96"  y="0" width="38" height="34" rx="6" fill="#1A0A28" opacity="0.9"/>
+    <rect x="96"  y="0" width="38" height="34" rx="6" fill="none" stroke="#F5A623" stroke-width="1.5" filter="url(#purpleLabelGlow)" opacity="0.7"/>
+    <text x="115" y="24" font-family="Georgia, serif" font-size="20" font-weight="bold"
+          text-anchor="middle" fill="#FFD700" filter="url(#purpleLabelGlow)">Z</text>
+    <!-- F4 empty — no letter icon -->
+    <rect x="144" y="0" width="38" height="34" rx="6" fill="#0A0814" opacity="0.8"/>
+    <rect x="144" y="0" width="38" height="34" rx="6" fill="none" stroke="#2A1050" stroke-width="1"/>
+    <text x="163" y="24" font-family="Georgia, serif" font-size="18"
+          text-anchor="middle" fill="#2A1050" opacity="0.6">—</text>
+  </g>
+  <text x="1025" y="512" font-family="Calibri, sans-serif" font-size="10"
+        text-anchor="middle" fill="#5A3A7A" opacity="0.7">M ×1  •  A ×1  •  Z ×2 rare  •  F4 empty</text>
+
+  <!-- Effect summary -->
+  <line x1="900" y1="528" x2="1150" y2="528" stroke="#2A1050" stroke-width="1" opacity="0.5"/>
+  <text x="1025" y="548" font-family="Georgia, serif" font-size="11"
+        text-anchor="middle" fill="#5A2A8A" letter-spacing="3" opacity="0.8">EFFECT</text>
+  <text x="1025" y="570" font-family="Calibri, sans-serif" font-size="12"
+        text-anchor="middle" fill="#9B6ACC" opacity="0.9">All 4 cells detonate at once.</text>
+  <text x="1025" y="586" font-family="Calibri, sans-serif" font-size="12"
+        text-anchor="middle" fill="#9B6ACC" opacity="0.9">Tiles harvested, empties confirmed.</text>
+  <text x="1025" y="608" font-family="Calibri, sans-serif" font-size="11"
+        text-anchor="middle" fill="#5A3A7A" opacity="0.8">Choose any 2×2 block on the grid.</text>
+  <text x="1025" y="624" font-family="Calibri, sans-serif" font-size="11"
+        text-anchor="middle" fill="#5A3A7A" opacity="0.8">No targeting — entire zone destroyed.</text>
+
+  <!-- Tier escalation reminder -->
+  <line x1="900" y1="645" x2="1150" y2="645" stroke="#2A1050" stroke-width="1" opacity="0.4"/>
+  <g font-family="'Courier New', monospace" font-size="10" fill="#2A1050" opacity="0.6">
+    <text x="910" y="663">I   SPARK      gold    row scan</text>
+    <text x="910" y="678">II  BLAST      red     single cell</text>
+    <text x="910" y="693">III SURGE      teal    col reveal</text>
+    <text x="910" y="708" fill="#7B40B0" opacity="0.85">IV  STORM      purple  2×2 zone</text>
+    <text x="910" y="723">V   TEMPEST    —       letter steal</text>
+    <text x="910" y="738">VI  OBLITERATE —       full row/col</text>
+  </g>
+
+</svg>
